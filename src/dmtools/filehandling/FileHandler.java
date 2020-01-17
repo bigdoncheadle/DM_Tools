@@ -79,7 +79,7 @@ public class FileHandler {
             try {
                 file.createNewFile();
             } catch (IOException e) {
-                throw new IIOException(
+                throw new IOException(
                         "Something went wrong creating a new file");
             }
         }
