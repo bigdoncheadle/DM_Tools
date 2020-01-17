@@ -5,7 +5,6 @@
  */
 package dmtools;
 
-import dmtools.GUI.TestingGUI;
 import dmtools.GUI.main.DMToolsGui;
 import javax.swing.SwingUtilities;
 
