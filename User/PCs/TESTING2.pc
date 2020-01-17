@@ -1,10 +1,10 @@
-characterName=TESTING2
-playerName=DEVELOPER
+characterName=Testing2
+playerName=Developer
 race=DWARF
 alignment=LAWFUL_EVIL
 playableClass=BARBARIAN
 characterLevel=20
-statBlock=10 10 10 10 10 10
+statBlock=105 10 10 10 10 10
 selectedSkills=STEALTH ARCANA
 armorClass=20
 maxHP=100
