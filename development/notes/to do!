@@ -1,0 +1,8 @@
+to do :
+
+
+
+-set skills to only enable allowed perclass, and only allow for max selections
+-fighter has an "or" for the class stats
+-Set all fonts and layout stuff to variables found in LayoutConstants
+-do an error handler in main that catches all exceptions and writes them to a file.

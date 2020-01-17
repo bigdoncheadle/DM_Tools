@@ -1,0 +1,13 @@
+    public static Color YELLOW = Color.decode("#C2983D");
+    public static Color CHARCOAL = Color.decode("#262425");
+    public static Color GREEN = Color.decode("#303D38");
+    public static Color BEIGE = Color.decode("#928A74");
+    public static Color RED = Color.decode("#380909");
+	
+	
+	
+	#C2983D
+	#262425
+	#303D38
+	#928A74
+	#380909

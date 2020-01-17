@@ -1,0 +1,11 @@
+characterName=w00t
+playerName=ksjdf
+race=DWARF
+alignment=LAWFUL_NEUTRAL
+playableClass=BARD
+characterLevel=4
+statBlock=121 22 1 20 51 111
+selectedSkills=ACROBATICS ARCANA
+armorClass=55
+maxHP=1
+currentHP=1

@@ -1,0 +1,11 @@
+characterName=kdjfkjdf
+playerName=kjdk
+race=DWARF
+alignment=NEUTRAL_GOOD
+playableClass=CLERIC
+characterLevel=5
+statBlock=103 103 105 107 108 108
+selectedSkills=ARCANA HISTORY
+armorClass=5
+maxHP=4
+currentHP=4

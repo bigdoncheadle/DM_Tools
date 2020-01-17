@@ -1,0 +1,11 @@
+characterName=A Fake Character
+playerName=Dev
+race=GNOME
+alignment=CHAOTIC_NEUTRAL
+playableClass=ROGUE
+characterLevel=7
+statBlock=15 87 41 4 55 20
+selectedSkills=ANIMAL_HANDLING INTIMIDATION
+armorClass=10
+maxHP=10
+currentHP=10

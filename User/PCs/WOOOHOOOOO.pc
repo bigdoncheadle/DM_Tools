@@ -1,0 +1,11 @@
+characterName=wooohooooo
+playerName=jkjdf
+race=DRAGONBORN
+alignment=CHAOTIC_GOOD
+playableClass=CLERIC
+characterLevel=3
+statBlock=343 4 4 4 4 4
+selectedSkills=ACROBATICS
+armorClass=324
+maxHP=34
+currentHP=34

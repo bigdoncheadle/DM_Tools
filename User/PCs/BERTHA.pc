@@ -1,0 +1,11 @@
+characterName=BERTHA
+playerName=ARTIE
+race=DWARF
+alignment=LAWFUL_EVIL
+playableClass=BARBARIAN
+characterLevel=23
+statBlock=10 10 10 10 10 10
+selectedSkills=NATURE PERFORMANCE
+armorClass=22
+maxHP=100
+currentHP=2

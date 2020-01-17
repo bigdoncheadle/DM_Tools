@@ -1,0 +1,13 @@
+characterName=Steev
+playerName=Dil
+race=HUMAN
+alignment=NEUTRAL_EVIL
+playableClass=BARBARIAN
+characterLevel=20
+statBlock=20 20 20 2 20 20
+selectedSkills=ACROBATICS STEALTH
+armorClass=30
+maxHP=100
+currentHP=100
+inventory= 
+wealth= 
