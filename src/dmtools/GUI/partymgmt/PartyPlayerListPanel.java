@@ -33,11 +33,9 @@ public class PartyPlayerListPanel extends JPanel
     public PartyPlayerListPanel(PlayerParty party) {
         super();
         this.party = party;
-        playerMap = new HashMap();
-        listModel = new DefaultListModel();
         setLayout(new GridBagLayout());
 
-        addComponents();
+        refreshList();
         players = new JList(listModel);
         players.setLayoutOrientation(JList.VERTICAL);
         players.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -48,7 +46,36 @@ public class PartyPlayerListPanel extends JPanel
         add(players);
     }
 
-    private void addComponents() {
+    public PC getSelectedPC() {
+        return playerMap.get(getPcNameFromListing());
+    }
+    
+    public void addPC(PC pc) {
+        party.add(pc);
+        playerMap.put(pc.getName(), pc);
+        listModel.add(getCorrectIndex(pc), pc.getName() + "(" + 
+                pc.getPlayerName() + ")");
+        players.setSelectedIndex(getCorrectIndex(pc));
+    }
+    
+    public void removePC() {
+        String pcName = getPcNameFromListing();
+        PC toRemove = (PC)playerMap.get(pcName);
+        party.remove(toRemove);
+        playerMap.remove(pcName);
+        players.setSelectedIndex(0);
+        listModel.removeElement(players.getSelectedValue());
+    }
+    
+    public void updatePC (PC oldVersion, PC newVersion) {
+        party.remove(oldVersion);
+        party.add(newVersion);
+        refreshList();
+    }
+
+    private void refreshList() {
+        listModel = new DefaultListModel();
+        playerMap = new HashMap();
         for (DNDEntity i : party.getMembers()) {
             PC j = (PC) i;
             listModel.addElement(j.getName() + " (" + j.getPlayerName() + ")");
@@ -56,18 +83,15 @@ public class PartyPlayerListPanel extends JPanel
         }
     }
     
-    public PC getSelectedPC() {
-        String currentPcName = (String) players.getSelectedValue();
-        return playerMap.get(currentPcName);
+    private int getCorrectIndex(PC pc) {
+        return party.getMembers().indexOf(pc);
     }
     
-    public void removePC() {
-        PC toRemove = (PC)playerMap.get((String)players.getSelectedValue());
-        party.remove(toRemove);
-        playerMap.remove((String)players.getSelectedValue());
-        listModel.removeElement(players.getSelectedValue());
+    private String getPcNameFromListing() {
+        String currentPcListing = (String) players.getSelectedValue();
+        return currentPcListing.split(" ")[0];
     }
-
+    
     @Override
     public void valueChanged(ListSelectionEvent e) {
         if (e.getValueIsAdjusting() == false) {
@@ -81,5 +105,17 @@ public class PartyPlayerListPanel extends JPanel
                 
             }
         }
+    }
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (String i : playerMap.keySet()) {
+            sb.append(i);
+            sb.append(": ");
+            sb.append(playerMap.get(i).getName());
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 }
