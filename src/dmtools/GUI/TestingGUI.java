@@ -7,6 +7,8 @@ package dmtools.GUI;
 
 import dmtools.GUI.initiativeguicomponents.panels.InitiativeEntityCardPanel;
 import dmtools.GUI.initiativeguicomponents.panels.InitiativePlayerListPanel;
+import dmtools.GUI.partymgmt.PartyMgmtButtonPanel;
+import dmtools.GUI.partymgmt.PartyMgmtListener;
 import dmtools.GUI.partymgmt.PartyPlayerListPanel;
 import dmtools.game.initiative.InitiativeTracker;
 import java.awt.Color;
@@ -18,7 +20,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
-import resources.testing.TestingEntities;
 
 /**
  *
@@ -52,10 +53,9 @@ public class TestingGUI implements Runnable, ActionListener {
     }
 
     private void createComponents(Container container) {
-        delete = new JButton("Delete player");
-        delete.addActionListener(this);
-        pplp = new PartyPlayerListPanel(TestingEntities.TESTING_PARTY);
-        container.add(pplp);
+        
+        PartyMgmtButtonPanel buttonPanel = new PartyMgmtButtonPanel();
+        container.add(buttonPanel);
 
     }
 
