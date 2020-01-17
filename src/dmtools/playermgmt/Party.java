@@ -8,6 +8,7 @@ package dmtools.playermgmt;
 import dmtools.filehandling.ReadWritable;
 import dmtools.game.entities.DNDEntity;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.TreeSet;
 
 /**
@@ -34,6 +35,7 @@ public abstract class Party implements ReadWritable{
 
     public void add(DNDEntity e) {
         party.add(e);
+        Collections.sort(party);
     }
 
     public void remove(DNDEntity e) {
