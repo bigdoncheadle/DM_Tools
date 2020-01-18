@@ -6,6 +6,7 @@
 package dmtools.playermgmt;
 
 import dmtools.filehandling.ReadWritable;
+import dmtools.game.entities.DNDEntity;
 import dmtools.game.entities.PC;
 import java.util.ArrayList;
 
@@ -34,4 +35,20 @@ public class PlayerParty extends Party implements ReadWritable {
     public String getFilePath() {
         return "User/Parties/" + super.getName().toUpperCase() + ".pty";
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Party: ");
+        sb.append(name);
+        sb.append("\n");
+        sb.append("Members: \n");
+        for (DNDEntity i : party) {
+            sb.append(i.getName());
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+    
+    
 }
