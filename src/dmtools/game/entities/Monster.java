@@ -17,7 +17,7 @@ public class Monster extends DNDEntity{
     private int CR;
     private String monsterType;
     
-    public Monster(String name, String monsterType, StatBlock statBlock, int AC, 
+    public Monster(String name, String monsterType, int AC, 
             int HP, int CR) {
         super(name, new StatBlock(), AC, HP);
         this.CR = CR;
