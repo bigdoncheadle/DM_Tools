@@ -5,11 +5,7 @@
  */
 package dmtools;
 
-import dmtools.GUI.TestingGUI;
-import dmtools.filehandling.PCFileHandler;
-import dmtools.game.entities.DNDEntity;
-import dmtools.game.entities.PC;
-import java.util.ArrayList;
+import dmtools.GUI.main.DMToolsGui;
 import javax.swing.SwingUtilities;
 
 /**
@@ -17,14 +13,14 @@ import javax.swing.SwingUtilities;
  * @author A3
  */
 public class DMTools {
-
+    private static final String VERSION = "v.0.1-alpha";
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
 
-        TestingGUI ui = new TestingGUI("TEst");
-        SwingUtilities.invokeLater(ui);
+        DMToolsGui gui = new DMToolsGui(VERSION);
+        SwingUtilities.invokeLater(gui);
     }
 }

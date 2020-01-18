@@ -113,7 +113,7 @@ public class EditPcDialog extends JDialog implements PropertyChangeListener {
              */
             List<String> errors = checkErrors();
             if (errors == null) {
-                //create the pc here
+                //save the pc here
                 this.updatedPC = getPcWithChanges();
                 if (shouldSave) {
                     try {

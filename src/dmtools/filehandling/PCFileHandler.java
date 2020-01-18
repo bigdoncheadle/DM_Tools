@@ -5,7 +5,6 @@
  */
 package dmtools.filehandling;
 
-import dmtools.GUI.TestingGUI;
 import dmtools.game.entities.PC;
 import dmtools.game.entities.characteristics.Alignment;
 import dmtools.game.entities.characteristics.Race;

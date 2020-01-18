@@ -65,19 +65,25 @@ public class DisplayACandHP extends JPanel {
             switch (s) {
                 case "AC":
                     acLabel.setForeground(Color.red);
+                    break;
                 case "MaxHP":
                     mHpLabel.setForeground(Color.red);
+                    break;
                 case "CurrentHP":
                     cHpLabel.setForeground(Color.red);
+                    break;
             }
         } else {
             switch (s) {
                 case "AC":
                     acLabel.setForeground(null);
+                    break;
                 case "HP":
                     mHpLabel.setForeground(null);
+                    break;
                 case "CurrentHP":
                     cHpLabel.setForeground(null);
+                    break;
             }
         }
     }

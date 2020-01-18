@@ -1,0 +1,11 @@
+characterName=Jeff
+playerName=Dev
+race=ELF
+alignment=TRUE_NEUTRAL
+playableClass=DRUID
+characterLevel=5
+statBlock=15 12 13 15 20 12
+selectedSkills=ARCANA MEDICINE ACROBATICS
+armorClass=25
+maxHP=25
+currentHP=25

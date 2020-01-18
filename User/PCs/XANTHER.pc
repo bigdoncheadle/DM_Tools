@@ -1,0 +1,11 @@
+characterName=Xanther
+playerName=Dev
+race=GNOME
+alignment=NEUTRAL_GOOD
+playableClass=DRUID
+characterLevel=6
+statBlock=12 13 16 15 15 15
+selectedSkills=ATHLETICS
+armorClass=25
+maxHP=21
+currentHP=21
