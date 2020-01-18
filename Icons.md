@@ -1,5 +1,5 @@
 # Icons
-The following are some icons I think I will need at some point during the creation of this program. The icons in bold are going in the launch version, and the others are for future ideas. Try to keep DND in mind when designing, but I'm honestly open to any ideas for this.
+The following are some icons I think I will need at some point during the creation of this program. The icons in bold are going in the launch version, and the others are for future ideas. You are also welcome to come up with other ideas for what parts of DND the program might want to represent with an icon. Try to keep DND in mind when designing, but I'm honestly open to any ideas for this.
  - [ ] **Previous Player**
  - [ ] **Next Player**
  - [ ] **Restart**
