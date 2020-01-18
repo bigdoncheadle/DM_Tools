@@ -19,13 +19,13 @@ public class Horde extends DNDEntity {
     private List<Monster> horde;
     private Monster hordeType;
     public Horde(Monster monster,int count) {
-        super(monster.getType() + " Horde", monster.getStatBlock(), 
+        super(monster.getType() + " Horde", new StatBlock(), 
                 monster.getAC(), monster.getMaxHP());
         this.hordeType = monster;
         horde = new ArrayList();
         for (int i = 1; i <= count; i ++) {
             Monster clone = new Monster(monster.getName() + " " + i, 
-                    monster.getType(), monster.getStatBlock(), monster.getAC(), 
+                    monster.getType(), monster.getAC(), 
                     monster.getMaxHP(), monster.getCR());
             horde.add(clone);
         }
@@ -33,8 +33,8 @@ public class Horde extends DNDEntity {
     
     public void addMonster() {
         Monster clone = new Monster(hordeType.getName() + " " + 
-                horde.size() + 1, hordeType.getType(), hordeType.getStatBlock(), 
-                hordeType.getAC(), hordeType.getMaxHP(), hordeType.getCR());
+                horde.size() + 1, hordeType.getType(), hordeType.getAC(), 
+                hordeType.getMaxHP(), hordeType.getCR());
         horde.add(clone);
     }
     
