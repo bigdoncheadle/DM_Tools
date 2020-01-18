@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -77,6 +77,16 @@ public class DoubleList extends JPanel
         this.swap = button;
         swap.addActionListener(this);
     }
+
+    public void addObject(Object o, String key) {
+        masterMap.put(key, o);
+        masterList.add(key);
+        Collections.sort(masterList);
+        listA.add(key);
+        Collections.sort(listA);
+        listModelA.add(listA.indexOf(key), key);
+    }
+
     public Object getSelectedObject() {
         if (!jListA.isSelectionEmpty()) {
             return masterMap.get((String) jListA.getSelectedValue());
