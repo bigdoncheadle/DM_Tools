@@ -142,6 +142,26 @@ public class DoubleList extends JPanel
         }
         return objects;
     }
+    
+    protected void swap(Object key) {
+        if (listModelA.contains(key)) {
+            //remove 
+            listModelA.removeElement(key);
+            listA.remove((String) key);
+            //add
+            listB.add((String) key);
+            Collections.sort(listB);
+            listModelB.add(listB.indexOf(key), key);
+        } else if (listModelB.contains(key)) {
+            //remove
+            listModelB.removeElement(key);
+            listB.remove((String) key);
+            //add
+            listA.add((String) key);
+            Collections.sort(listA);
+            listModelA.add(listA.indexOf(key), key);
+        }
+    }
 
     public ArrayList<Object> getListBObjects() {
         ArrayList<Object> objects = new ArrayList();
@@ -225,25 +245,6 @@ public class DoubleList extends JPanel
         add(swap, c);
     }
 
-    private void swap(Object key) {
-        if (listModelA.contains(key)) {
-            //remove 
-            listModelA.removeElement(key);
-            listA.remove((String) key);
-            //add
-            listB.add((String) key);
-            Collections.sort(listB);
-            listModelB.add(listB.indexOf(key), key);
-        } else if (listModelB.contains(key)) {
-            //remove
-            listModelB.removeElement(key);
-            listB.remove((String) key);
-            //add
-            listA.add((String) key);
-            Collections.sort(listA);
-            listModelA.add(listA.indexOf(key), key);
-        }
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
