@@ -12,15 +12,10 @@ import dmtools.game.entities.numericals.StatBlock;
 import dmtools.game.entities.numericals.enums.Skill;
 import dmtools.game.playableclasses.PlayableClass;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashSet;
 import java.util.Properties;
-import javax.imageio.IIOException;
-import javax.swing.SwingUtilities;
 
 /**
  *
@@ -126,7 +121,7 @@ public class PCFileHandler {
             throw new IOException();
         }
     }
-
+    
     private static StatBlock generateStatBlock(String statString) {
         String[] statValueString = statString.split(" ");
         int[] statValues = new int[6];
