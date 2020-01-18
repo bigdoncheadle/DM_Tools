@@ -7,7 +7,7 @@ package dmtools.playermgmt;
 
 import dmtools.filehandling.ReadWritable;
 import dmtools.game.entities.PC;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,7 +15,7 @@ import java.util.TreeSet;
  */
 public class PlayerParty extends Party implements ReadWritable {
 
-    public PlayerParty(String name, TreeSet<PC> party) {
+    public PlayerParty(String name, ArrayList<PC> party) {
         super(name);
         for (PC i : party) {
             super.add(i);
