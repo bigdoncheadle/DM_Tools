@@ -116,30 +116,42 @@ public class DoubleList extends JPanel
         }
         return null;
     }
-    
-    public ArrayList<Object> getListAObjects () {
+
+    public ArrayList<String> getKeyMasterList() {
+        return masterList;
+    }
+
+    public ArrayList<String> getListAKeys() {
+        return listA;
+    }
+
+    public ArrayList<String> getListBKeys() {
+        return listB;
+    }
+
+    public ArrayList<Object> getListAObjects() {
         ArrayList<Object> objects = new ArrayList();
-        for (String i : aList) {
+        for (String i : listA) {
             objects.add(masterMap.get(i));
         }
         return objects;
     }
-    
-    public ArrayList<Object> getListBObjects () {
+
+    public ArrayList<Object> getListBObjects() {
         ArrayList<Object> objects = new ArrayList();
-        for (String i : bList) {
+        for (String i : listB) {
             objects.add(masterMap.get(i));
         }
         return objects;
     }
-    
+
     private void generateLists() {
         for (String i : masterMap.keySet()) {
             masterList.add(i);
-            aList.add(i);
+            listA.add(i);
         }
         Collections.sort(masterList);
-        Collections.sort(aList);
+        Collections.sort(listA);
     }
 
     private void generateListDisplays() {
