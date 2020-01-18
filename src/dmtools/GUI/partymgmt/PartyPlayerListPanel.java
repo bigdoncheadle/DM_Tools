@@ -10,7 +10,6 @@ import dmtools.game.entities.PC;
 import dmtools.playermgmt.PlayerParty;
 import java.awt.GridBagLayout;
 import java.util.HashMap;
-import java.util.TreeSet;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
