@@ -107,6 +107,12 @@ public class DoubleList extends JPanel
             listModelB.removeElement(key);
         }
     }
+    
+    public void replaceObject(Object o, String key) {
+        if (masterMap.containsKey(key)) {
+            masterMap.put(key, o);
+        }
+    }
 
     public Object getSelectedObject() {
         if (!jListA.isSelectionEmpty()) {
