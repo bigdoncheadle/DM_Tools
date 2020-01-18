@@ -31,7 +31,7 @@ public class DoubleList extends JPanel
         implements ActionListener, MouseListener {
 
     private HashMap<String, Object> masterMap;
-    private ArrayList<String> masterList, aList, bList;
+    private ArrayList<String> masterList, listA, listB;
     private JLabel labelA, labelB;
     private JButton swap;
     private DefaultListModel listModelA, listModelB;
@@ -42,8 +42,8 @@ public class DoubleList extends JPanel
         //initialize all variables
         this.masterMap = masterMap;
         this.masterList = new ArrayList();
-        this.aList = new ArrayList();
-        this.bList = new ArrayList();
+        this.listA = new ArrayList();
+        this.listB = new ArrayList();
         this.listModelA = new DefaultListModel();
         this.listModelB = new DefaultListModel();
         this.labelA = new JLabel("Label A");
@@ -77,7 +77,6 @@ public class DoubleList extends JPanel
         this.swap = button;
         swap.addActionListener(this);
     }
-    
     public Object getSelectedObject() {
         if (!jListA.isSelectionEmpty()) {
             return masterMap.get((String) jListA.getSelectedValue());
@@ -181,19 +180,19 @@ public class DoubleList extends JPanel
         if (listModelA.contains(key)) {
             //remove 
             listModelA.removeElement(key);
-            aList.remove((String) key);
+            listA.remove((String) key);
             //add
-            bList.add((String) key);
-            Collections.sort(bList);
-            listModelB.add(bList.indexOf(key), key);
+            listB.add((String) key);
+            Collections.sort(listB);
+            listModelB.add(listB.indexOf(key), key);
         } else if (listModelB.contains(key)) {
             //remove
             listModelB.removeElement(key);
-            bList.remove((String) key);
+            listB.remove((String) key);
             //add
-            aList.add((String) key);
-            Collections.sort(aList);
-            listModelA.add(aList.indexOf(key), key);
+            listA.add((String) key);
+            Collections.sort(listA);
+            listModelA.add(listA.indexOf(key), key);
         }
     }
 
@@ -248,5 +247,4 @@ public class DoubleList extends JPanel
     @Override
     public void mouseExited(MouseEvent e) {
     }
-
 }
