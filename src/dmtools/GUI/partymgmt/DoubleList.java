@@ -87,6 +87,27 @@ public class DoubleList extends JPanel
         listModelA.add(listA.indexOf(key), key);
     }
 
+    public void removeSelected() {
+        //gets selected string
+        String key = "";
+        if (!jListA.isSelectionEmpty()) {
+            key = (String) jListA.getSelectedValue();
+        }
+        if (!jListB.isSelectionEmpty()) {
+            key = (String) jListB.getSelectedValue();
+        }
+
+        //removes
+        if (!key.equals("")) {
+            masterMap.remove(key);
+            masterList.remove(key);
+            listA.remove(key);
+            listB.remove(key);
+            listModelA.removeElement(key);
+            listModelB.removeElement(key);
+        }
+    }
+
     public Object getSelectedObject() {
         if (!jListA.isSelectionEmpty()) {
             return masterMap.get((String) jListA.getSelectedValue());
