@@ -32,10 +32,10 @@ public class DoubleList extends JPanel
 
     private HashMap<String, Object> masterMap;
     private ArrayList<String> masterList, listA, listB;
-    private JLabel labelA, labelB;
-    private JButton swap;
-    private DefaultListModel listModelA, listModelB;
-    private JList jListA, jListB;
+    protected JLabel labelA, labelB;
+    protected JButton swap;
+    protected DefaultListModel listModelA, listModelB;
+    protected JList jListA, jListB;
     private int padding;
 
     public DoubleList(HashMap<String, Object> masterMap, int padding) {
