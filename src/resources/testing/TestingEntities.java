@@ -12,9 +12,9 @@ import dmtools.game.entities.numericals.StatBlock;
 import dmtools.game.entities.numericals.enums.Skill;
 import dmtools.game.playableclasses.PlayableClass;
 import dmtools.playermgmt.PlayerParty;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.TreeSet;
 
 /**
  *
@@ -35,5 +35,5 @@ public class TestingEntities {
     private static final PC PCS[] = {TESTING_PC1, TESTING_PC2};
 
     public static PlayerParty TESTING_PARTY = new PlayerParty("Testing Party",
-            new TreeSet<PC>(Arrays.asList(PCS)));
+            new ArrayList<PC>(Arrays.asList(PCS)));
 }
