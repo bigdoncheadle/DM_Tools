@@ -115,6 +115,16 @@ public class DoubleList extends JPanel
             masterMap.put(key, o);
         }
     }
+    
+    public void setSelectedKey(String key) {
+        if (listA.contains(key)) {
+            jListA.requestFocus();
+            jListA.setSelectedValue(key, true);
+        } else if (listB.contains(key)) {
+            jListB.requestFocus();
+            jListB.setSelectedValue(key, true);
+        }
+    }
 
     public Object getSelectedObject() {
         if (!jListA.isSelectionEmpty()) {
@@ -155,7 +165,6 @@ public class DoubleList extends JPanel
             Collections.sort(listB);
             listModelB.add(listB.indexOf(key), key);
             jListB.setSelectedValue(key, true);
-            jListB.requestFocus();
         } else if (listModelB.contains(key)) {
             //remove
             listModelB.removeElement(key);
@@ -165,7 +174,6 @@ public class DoubleList extends JPanel
             Collections.sort(listA);
             listModelA.add(listA.indexOf(key), key);
             jListA.setSelectedValue(key, true);
-            jListA.requestFocus();
         }
     }
 
