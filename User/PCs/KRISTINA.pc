@@ -1,0 +1,11 @@
+characterName=Kristina
+playerName=dev
+race=ELF
+alignment=LAWFUL_GOOD
+playableClass=CLERIC
+characterLevel=14
+statBlock=252 52 52 54 54 65
+selectedSkills=INSIGHT DECEPTION
+armorClass=25
+maxHP=25
+currentHP=25

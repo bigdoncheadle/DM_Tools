@@ -1,0 +1,11 @@
+characterName=Tester
+playerName=kjsdf
+race=DWARF
+alignment=CHAOTIC_GOOD
+playableClass=CLERIC
+characterLevel=6
+statBlock=5 5 5 5 5 5
+selectedSkills=ACROBATICS
+armorClass=5
+maxHP=5
+currentHP=5

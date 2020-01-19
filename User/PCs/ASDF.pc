@@ -1,0 +1,11 @@
+characterName=asdf
+playerName=asdf
+race=ELF
+alignment=LAWFUL_GOOD
+playableClass=CLERIC
+characterLevel=1
+statBlock=34 34 34 3434 34 34
+selectedSkills=DECEPTION
+armorClass=43
+maxHP=34
+currentHP=34
