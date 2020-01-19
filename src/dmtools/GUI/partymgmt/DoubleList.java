@@ -228,6 +228,8 @@ public class DoubleList extends JPanel
         c.anchor = GridBagConstraints.FIRST_LINE_START;
         c.gridx = 0;
         c.gridy = 1;
+        c.weightx = 1;
+        c.weighty = 1;
         c.gridheight = 2;
         add(jListA, c);
 
@@ -235,6 +237,8 @@ public class DoubleList extends JPanel
         c.fill = GridBagConstraints.NONE;
         c.anchor = GridBagConstraints.PAGE_END;
         c.insets = rightInsets;
+        c.weightx = 0;
+        c.weighty = 0;
         c.gridx = 2;
         c.gridy = 0;
         add(labelB, c);
@@ -244,9 +248,13 @@ public class DoubleList extends JPanel
         c.gridx = 2;
         c.gridy = 1;
         c.gridheight = 2;
+        c.weightx = 1;
+        c.weighty = 1;
         add(jListB, c);
 
         //Center
+        c.weightx = 0;
+        c.weighty = 0;
         c.anchor = GridBagConstraints.CENTER;
         c.insets = centerInsets;
         c.gridheight = 1;
@@ -282,7 +290,7 @@ public class DoubleList extends JPanel
             }
         }
     }
-    
+
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getButton() != MouseEvent.BUTTON1) {
