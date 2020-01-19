@@ -22,13 +22,15 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
  * @author A3
  */
 public class DoubleList extends JPanel
-        implements ActionListener, MouseListener {
+        implements ActionListener, MouseListener, ListSelectionListener {
 
     private HashMap<String, Object> masterMap;
     private ArrayList<String> masterList, listA, listB;
@@ -107,7 +109,7 @@ public class DoubleList extends JPanel
             listModelB.removeElement(key);
         }
     }
-    
+
     public void replaceObject(Object o, String key) {
         if (masterMap.containsKey(key)) {
             masterMap.put(key, o);
@@ -142,7 +144,7 @@ public class DoubleList extends JPanel
         }
         return objects;
     }
-    
+
     protected void swap(Object key) {
         if (listModelA.contains(key)) {
             //remove 
@@ -152,6 +154,8 @@ public class DoubleList extends JPanel
             listB.add((String) key);
             Collections.sort(listB);
             listModelB.add(listB.indexOf(key), key);
+            jListB.setSelectedValue(key, true);
+            jListB.requestFocus();
         } else if (listModelB.contains(key)) {
             //remove
             listModelB.removeElement(key);
@@ -160,6 +164,8 @@ public class DoubleList extends JPanel
             listA.add((String) key);
             Collections.sort(listA);
             listModelA.add(listA.indexOf(key), key);
+            jListA.setSelectedValue(key, true);
+            jListA.requestFocus();
         }
     }
 
@@ -190,10 +196,12 @@ public class DoubleList extends JPanel
         jListA = new JList(listModelA);
         jListA.setBorder(border);
         jListA.setVisibleRowCount(masterList.size() + 1);
+        jListA.addListSelectionListener(this);
         jListA.addMouseListener(this);
         jListB = new JList(listModelB);
         jListB.setVisibleRowCount(masterList.size() + 1);
         jListB.setBorder(border);
+        jListB.addListSelectionListener(this);
         jListB.addMouseListener(this);
     }
 
@@ -209,12 +217,14 @@ public class DoubleList extends JPanel
         c.fill = GridBagConstraints.BOTH;
 
         //A Side
-        c.anchor = GridBagConstraints.PAGE_END;
+        c.fill = GridBagConstraints.NONE;
+        c.anchor = GridBagConstraints.CENTER;
         c.insets = leftInsets;
         c.gridx = 0;
         c.gridy = 0;
         add(labelA, c);
 
+        c.fill = GridBagConstraints.BOTH;
         c.anchor = GridBagConstraints.FIRST_LINE_START;
         c.gridx = 0;
         c.gridy = 1;
@@ -222,12 +232,14 @@ public class DoubleList extends JPanel
         add(jListA, c);
 
         //B Side
+        c.fill = GridBagConstraints.NONE;
         c.anchor = GridBagConstraints.PAGE_END;
         c.insets = rightInsets;
         c.gridx = 2;
         c.gridy = 0;
         add(labelB, c);
 
+        c.fill = GridBagConstraints.BOTH;
         c.anchor = GridBagConstraints.FIRST_LINE_START;
         c.gridx = 2;
         c.gridy = 1;
@@ -245,17 +257,32 @@ public class DoubleList extends JPanel
         add(swap, c);
     }
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (!jListA.isSelectionEmpty()) {
             swap(jListA.getSelectedValue());
-        }
-        if (!jListB.isSelectionEmpty()) {
+
+        } else if (!jListB.isSelectionEmpty()) {
             swap(jListB.getSelectedValue());
         }
     }
 
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        if (!e.getValueIsAdjusting()) {
+            if (e.getSource() == jListA) {
+                if (!jListA.isSelectionEmpty()) {
+                    jListB.clearSelection();
+                }
+            }
+            if (e.getSource() == jListB) {
+                if (!jListB.isSelectionEmpty()) {
+                    jListA.clearSelection();
+                }
+            }
+        }
+    }
+    
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getButton() != MouseEvent.BUTTON1) {
@@ -270,16 +297,7 @@ public class DoubleList extends JPanel
             if (list == jListB) {
                 swap(jListB.getSelectedValue());
             }
-
-        } else {
-            if (list == jListA) {
-                jListB.clearSelection();
-            }
-            if (list == jListB) {
-                jListA.clearSelection();
-            }
         }
-
     }
 
     @Override
@@ -297,4 +315,5 @@ public class DoubleList extends JPanel
     @Override
     public void mouseExited(MouseEvent e) {
     }
+
 }
