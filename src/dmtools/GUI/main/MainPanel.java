@@ -34,7 +34,10 @@ public class MainPanel extends JPanel {
         setLayout(new GridBagLayout());
         nav = new NavigationPanel();
 
-        //for testing purposes only
+        /*
+        * For testing purposes only
+        */
+        
         Map<DNDEntity, Integer> entities = new HashMap();
         entities.put(TestingEntities.TESTING_PC1, 1);
         entities.put(TestingEntities.TESTING_PC2, 2);
