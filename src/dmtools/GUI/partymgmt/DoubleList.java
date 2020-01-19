@@ -80,13 +80,19 @@ public class DoubleList extends JPanel
         swap.addActionListener(this);
     }
 
-    public void addObject(Object o, String key) {
+    public void addObject(Object o, String key, boolean shouldSwap) {
         masterMap.put(key, o);
         masterList.add(key);
         Collections.sort(masterList);
-        listA.add(key);
-        Collections.sort(listA);
-        listModelA.add(listA.indexOf(key), key);
+        if (shouldSwap) {
+            listB.add(key);
+            Collections.sort(listB);
+            listModelB.add(listB.indexOf(key), key);
+        } else {
+            listA.add(key);
+            Collections.sort(listA);
+            listModelA.add(listA.indexOf(key), key);
+        }
     }
 
     public void removeSelected() {
