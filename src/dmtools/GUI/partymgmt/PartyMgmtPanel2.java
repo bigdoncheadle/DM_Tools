@@ -6,6 +6,7 @@
 package dmtools.GUI.partymgmt;
 
 import dmtools.GUI.entityguicomponents.dialogs.CreatePcDialog;
+import dmtools.GUI.entityguicomponents.dialogs.EditPcDialog;
 import dmtools.GUI.main.DMToolsGui;
 import dmtools.game.entities.PC;
 import dmtools.playermgmt.PlayerParty;
@@ -121,7 +122,7 @@ public class PartyMgmtPanel2 extends JPanel implements ActionListener {
         c.gridy = 1;
         c.insets = new Insets(3, 3, 3, 3);
         editNamePanel.add(submitPartyName, c);
-        
+
         return editNamePanel;
     }
 
@@ -133,14 +134,29 @@ public class PartyMgmtPanel2 extends JPanel implements ActionListener {
                     true);
             try {
                 PC addedPC = createDialog.getCreatedPC();
-                String key = addedPC.getName() + " (" + 
-                        addedPC.getPlayerName() + ")";
+                String key = addedPC.getName() + " ("
+                        + addedPC.getPlayerName() + ")";
                 partyDoubleList.addObject(addedPC, key, true);
                 partyDoubleList.setSelectedKey(key);
             } catch (Exception ex) {
                 return;
             }
         }
+
+        // Edit PC button
+        if (e.getSource() == editPC) {
+            PC pcToEdit = (PC) partyDoubleList.getSelectedObject();
+            EditPcDialog editDialog = new EditPcDialog(DMToolsGui.frame,
+                    pcToEdit);
+            PC updatedPC = editDialog.getUpdatedPC();
+
+            if (updatedPC != null) {
+                String key = updatedPC.getName() + " ("
+                        + updatedPC.getPlayerName() + ")";
+                partyDoubleList.replaceObject(updatedPC, key);
+            }
+        }
+
         // Remove player button
         if (e.getSource() == delete) {
             //if there is no selection

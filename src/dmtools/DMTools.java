@@ -5,7 +5,7 @@
  */
 package dmtools;
 
-import dmtools.GUI.main.DMToolsGui;
+import dmtools.GUI.TestingGUI;
 import javax.swing.SwingUtilities;
 
 /**
@@ -20,7 +20,7 @@ public class DMTools {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        DMToolsGui gui = new DMToolsGui(VERSION);
+        TestingGUI gui = new TestingGUI();
         SwingUtilities.invokeLater(gui);
     }
 }

@@ -21,6 +21,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.ListSelectionModel;
 import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -170,7 +171,7 @@ public class DoubleList extends JPanel
             listB.add((String) key);
             Collections.sort(listB);
             listModelB.add(listB.indexOf(key), key);
-            jListB.setSelectedValue(key, true);
+            setSelectedKey((String)key);
         } else if (listModelB.contains(key)) {
             //remove
             listModelB.removeElement(key);
@@ -179,7 +180,7 @@ public class DoubleList extends JPanel
             listA.add((String) key);
             Collections.sort(listA);
             listModelA.add(listA.indexOf(key), key);
-            jListA.setSelectedValue(key, true);
+            setSelectedKey((String)key);
         }
     }
 
@@ -210,10 +211,12 @@ public class DoubleList extends JPanel
         jListA = new JList(listModelA);
         jListA.setBorder(border);
         jListA.setVisibleRowCount(masterList.size() + 1);
+        jListA.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         jListA.addListSelectionListener(this);
         jListA.addMouseListener(this);
         jListB = new JList(listModelB);
         jListB.setVisibleRowCount(masterList.size() + 1);
+        jListB.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         jListB.setBorder(border);
         jListB.addListSelectionListener(this);
         jListB.addMouseListener(this);
@@ -307,13 +310,14 @@ public class DoubleList extends JPanel
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        JList list = (JList) e.getSource();
+        
         if (e.getButton() != MouseEvent.BUTTON1) {
             return;
         }
 
-        JList list = (JList) e.getSource();
-        if (e.getClickCount() == 2) {
-            if (list == jListA) {
+        if (e.getClickCount() == 1 && e.isShiftDown()) {
+                        if (list == jListA) {
                 swap(jListA.getSelectedValue());
             }
             if (list == jListB) {
