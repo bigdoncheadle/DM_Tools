@@ -6,14 +6,10 @@
 package dmtools.GUI.partymgmt;
 
 import dmtools.filehandling.BatchFileHandler;
-import dmtools.game.entities.DNDEntity;
 import dmtools.game.entities.PC;
 import dmtools.playermgmt.PlayerParty;
 import java.util.ArrayList;
 import java.util.HashMap;
-import javax.swing.JList;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -64,6 +60,10 @@ public class PartyDoubleList extends DoubleList{
             }
         } catch (Exception e) {
         }
+        
+        // Add mouse listener to lists
+        jListA.addMouseListener(new PartyDblListMouseListener(this));
+        jListB.addMouseListener(new PartyDblListMouseListener(this));
     }
 
     private String getListing(PC pc) {
