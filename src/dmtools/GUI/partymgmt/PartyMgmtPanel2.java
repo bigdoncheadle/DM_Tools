@@ -15,6 +15,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -182,6 +183,10 @@ public class PartyMgmtPanel2 extends JPanel implements ActionListener {
                 partyDoubleList.removeSelected();
 
                 //REMOVE THE FILE HERE!
+                File pcFile = new File(toDelete.getFilePath());
+                if (pcFile.delete()) {
+                    System.out.println("true");
+                }
             }
         }
 
