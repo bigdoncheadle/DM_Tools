@@ -5,9 +5,6 @@
  */
 package dmtools.GUI.entityguicomponents.dialogs;
 
-import dmtools.GUI.entityguicomponents.dialogs.panels.CreateACandHP;
-import dmtools.GUI.entityguicomponents.dialogs.panels.CreateSelectedSkills;
-import dmtools.GUI.entityguicomponents.dialogs.panels.CreateStatBlockPanel;
 import dmtools.GUI.entityguicomponents.comboboxes.DNDComboBox;
 import dmtools.GUI.entityguicomponents.dialogs.panels.DisplayACandHP;
 import dmtools.GUI.entityguicomponents.dialogs.panels.DisplaySelectedSkills;
@@ -75,7 +72,7 @@ public class EditPcDialog extends JDialog implements PropertyChangeListener {
         this.toEditPC = pc;
         this.shouldSave = true;
 
-        setTitle("Edit a Player Character");
+        setTitle(pc.getName());
         String createButtonTxt = "Save";
         Object[] options = {createButtonTxt};
 
