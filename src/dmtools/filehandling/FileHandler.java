@@ -31,6 +31,31 @@ public class FileHandler {
     public FileHandler() {
     }
 
+    public static ReadWritable loadFromFile(File file)
+            throws Exception {
+        if (file.isFile()) {
+            InputStream iStream = new FileInputStream(file);
+            Properties properties = new Properties();
+            properties.load(iStream);
+            iStream.close();
+            
+            //Determines which type of file it is
+            if (file.getName().endsWith(".pc")) {
+                return PCFileHandler.read(properties);
+            }
+            
+            if (file.getName().endsWith(".pty")) {
+                return PartyFileHandler.read(properties, 
+                        PartyFileHandler.PLAYER_PARTY);
+            }
+            
+            return null;
+        } else {
+            throw new FileNotFoundException("The file at "
+                    + file.getAbsolutePath() + " could not be loaded.");
+        }
+    }
+
     public static ReadWritable loadFromName(String name, int fileType)
             throws IOException {
         InputStream iStream;
@@ -42,17 +67,17 @@ public class FileHandler {
             case PC_FILE:
                 file = new File(PC.getFilePath(name));
                 break;
-                
+
             case PLAYER_PARTY_FILE:
                 file = new File(PlayerParty.getFilePath(name));
                 break;
         }
-        
+
         //This is if an unsupported filetype is given
         if (file == null) {
             throw new FileNotFoundException("File type not supported");
         }
-        
+
         //if the file exists, this is where it is read from and returned
         if (file.isFile()) {
             iStream = new FileInputStream(file);
@@ -62,7 +87,7 @@ public class FileHandler {
                 case PC_FILE:
                     return PCFileHandler.read(properties);
                 case PLAYER_PARTY_FILE:
-                    return PartyFileHandler.read(properties, 
+                    return PartyFileHandler.read(properties,
                             PartyFileHandler.PLAYER_PARTY);
             }
         } else {
@@ -91,11 +116,11 @@ public class FileHandler {
                     PCFileHandler.write((PC) target, file);
                     break;
                 case PLAYER_PARTY_FILE:
-                    PartyFileHandler.write((Party)target, 
+                    PartyFileHandler.write((Party) target,
                             PartyFileHandler.PLAYER_PARTY, file);
                     Party p = (PlayerParty) target;
                     for (DNDEntity i : p.getMembers()) {
-                        PC pc = (PC)i;
+                        PC pc = (PC) i;
                         PCFileHandler.write(pc, new File(pc.getFilePath()));
                     }
                     break;

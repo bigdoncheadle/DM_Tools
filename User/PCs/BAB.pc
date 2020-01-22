@@ -1,0 +1,11 @@
+characterName=Bab
+playerName=abdbf
+race=DWARF
+alignment=LAWFUL_GOOD
+playableClass=BARD
+characterLevel=4
+statBlock=5 5 5 5 5 5
+selectedSkills=ARCANA
+armorClass=5
+maxHP=5
+currentHP=5

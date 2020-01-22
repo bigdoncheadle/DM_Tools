@@ -18,7 +18,7 @@ import java.util.TreeSet;
 public abstract class Party implements ReadWritable{
 
     protected ArrayList<DNDEntity> party;
-    private String name;
+    protected String name;
 
     public Party(String name) {
         this.name = name;
