@@ -13,11 +13,12 @@ import dmtools.game.entities.numericals.enums.Stat;
  *
  * @author A3
  */
-public class Monster extends DNDEntity{
+public class Monster extends DNDEntity {
+
     private int CR;
     private String monsterType;
-    
-    public Monster(String name, String monsterType, int AC, 
+
+    public Monster(String name, String monsterType, int AC,
             int HP, int CR) {
         super(name, new StatBlock(), AC, HP);
         this.CR = CR;
@@ -27,11 +28,11 @@ public class Monster extends DNDEntity{
     public int getCR() {
         return CR;
     }
-    
+
     public String getType() {
         return monsterType;
     }
-    
+
     @Override
     public int getProficiencyBonus() {
         return 0;
@@ -46,10 +47,4 @@ public class Monster extends DNDEntity{
     public int getSkillCheck(Skill skill) {
         return statBlock.getModifier(skill.getRelevantStat());
     }
-
-    @Override
-    public int compareTo(DNDEntity o) {
-        return this.name.compareTo(o.name);
-    }
-    
 }

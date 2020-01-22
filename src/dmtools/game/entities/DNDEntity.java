@@ -88,4 +88,9 @@ public abstract class DNDEntity implements Comparable<DNDEntity>{
     abstract public int getSavingThrow(Stat stat);
 
     abstract public int getSkillCheck(Skill skill);
+
+    @Override
+    public int compareTo(DNDEntity o) {
+        return this.name.compareToIgnoreCase(o.name);
+    }
 }
