@@ -30,6 +30,7 @@ public abstract class Party implements ReadWritable{
     }
 
     public ArrayList<DNDEntity> getMembers() {
+        Collections.sort(party);
         return party;
     }
 
