@@ -19,6 +19,7 @@ public class Monster extends DNDEntity{
     
     public Monster(String name, String monsterType, int AC, 
             int HP, int CR) {
+        // Statblock is a placeholder until monsters are actually developed
         super(name, new StatBlock(), AC, HP);
         this.CR = CR;
         this.monsterType = monsterType;
