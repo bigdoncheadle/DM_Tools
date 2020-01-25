@@ -5,6 +5,7 @@
  */
 package dmtools.game.entities;
 
+import dmtools.filehandling.ReadWritable;
 import dmtools.game.entities.numericals.StatBlock;
 import dmtools.game.entities.numericals.enums.Skill;
 import dmtools.game.entities.numericals.enums.Stat;
@@ -13,7 +14,7 @@ import dmtools.game.entities.numericals.enums.Stat;
  *
  * @author A3
  */
-public class Monster extends DNDEntity{
+public class Monster extends DNDEntity implements ReadWritable{
     private int CR;
     private String monsterType;
     
@@ -52,5 +53,13 @@ public class Monster extends DNDEntity{
     public int compareTo(DNDEntity o) {
         return this.name.compareTo(o.name);
     }
+
+    @Override
+    public String getFilePath() {
+        return "User/Monsters/" + this.name.toUpperCase() + ".mon";
+    }
     
+    public static String getFilePath(String name) {
+        return "User/Monsters/" + name + ".mon";
+    }
 }
