@@ -118,7 +118,7 @@ public class PCFileHandler {
 
             fWrite.close();
         } catch (IOException e) {
-            throw new IOException();
+            throw new IOException("Error occured writing PC to file");
         }
     }
     
