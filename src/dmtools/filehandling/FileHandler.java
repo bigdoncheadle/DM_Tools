@@ -6,6 +6,7 @@
 package dmtools.filehandling;
 
 import dmtools.game.entities.DNDEntity;
+import dmtools.game.entities.Monster;
 import dmtools.game.entities.PC;
 import dmtools.playermgmt.Party;
 import dmtools.playermgmt.PlayerParty;
@@ -15,7 +16,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-import javax.imageio.IIOException;
 
 /**
  *
@@ -48,6 +48,9 @@ public class FileHandler {
                 return PartyFileHandler.read(properties, 
                         PartyFileHandler.PLAYER_PARTY);
             }
+            if (file.getName().endsWith(".mon")) {
+                return MonsterFileHandler.read(properties);
+            }
             
             return null;
         } else {
@@ -71,6 +74,9 @@ public class FileHandler {
             case PLAYER_PARTY_FILE:
                 file = new File(PlayerParty.getFilePath(name));
                 break;
+            case MONSTER_FILE:
+                file = new File(Monster.getFilePath(name));
+                break;
         }
 
         //This is if an unsupported filetype is given
@@ -89,7 +95,10 @@ public class FileHandler {
                 case PLAYER_PARTY_FILE:
                     return PartyFileHandler.read(properties,
                             PartyFileHandler.PLAYER_PARTY);
+                case MONSTER_FILE:
+                    return MonsterFileHandler.read(properties);
             }
+            
         } else {
             throw new FileNotFoundException("No such file found.");
         }
@@ -123,6 +132,9 @@ public class FileHandler {
                         PC pc = (PC) i;
                         PCFileHandler.write(pc, new File(pc.getFilePath()));
                     }
+                    break;
+                case MONSTER_FILE:
+                    MonsterFileHandler.write((Monster) target, file);
                     break;
             }
 
