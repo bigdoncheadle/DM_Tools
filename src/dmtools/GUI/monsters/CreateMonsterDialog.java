@@ -5,10 +5,12 @@
  */
 package dmtools.GUI.monsters;
 
+import dmtools.filehandling.FileHandler;
 import dmtools.game.entities.Monster;
 import java.awt.Frame;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.IOException;
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -27,7 +29,7 @@ public class CreateMonsterDialog extends JDialog implements PropertyChangeListen
     public CreateMonsterDialog(Frame frame) {
         super(frame, true);
         this.monPanel = new MonsterCreationPanel();
-        
+
         setTitle("Create a new Monster");
         String createButtonTxt = "Create";
         Object[] options = {createButtonTxt};
@@ -59,7 +61,7 @@ public class CreateMonsterDialog extends JDialog implements PropertyChangeListen
                 return;
             }
             optionPane.setValue(JOptionPane.UNINITIALIZED_VALUE);
-            
+
             /*
             * This is where the error list is displayed
             * or the monster is created
@@ -68,6 +70,12 @@ public class CreateMonsterDialog extends JDialog implements PropertyChangeListen
             if (errors.isEmpty()) {
                 //create the monster here
                 this.monster = monPanel.getCreatedMonster();
+                try {
+                    FileHandler.saveFromInstance(monster,
+                            FileHandler.MONSTER_FILE);
+                } catch (IOException ex) {
+                    System.out.println("ERROR"); // Don't know what to do 
+                }
                 dispose();
             } else {
                 JOptionPane.showMessageDialog(this,
@@ -78,7 +86,7 @@ public class CreateMonsterDialog extends JDialog implements PropertyChangeListen
             }
         }
     }
-    
+
     public Monster getMonster() {
         return this.monster;
     }
