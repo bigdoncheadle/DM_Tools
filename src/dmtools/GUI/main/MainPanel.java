@@ -6,7 +6,7 @@
 package dmtools.GUI.main;
 
 import dmtools.GUI.LayoutConstants;
-import dmtools.GUI.initiativeguicomponents.panels.masterpanels.EncounterPanel;
+import dmtools.GUI.initiativeguicomponents.EncounterPanel;
 import dmtools.GUI.main.panels.NavigationPanel;
 import dmtools.filehandling.FileHandler;
 import dmtools.game.entities.DNDEntity;

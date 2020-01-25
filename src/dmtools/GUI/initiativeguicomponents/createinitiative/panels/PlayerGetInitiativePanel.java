@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dmtools.GUI.initiativeguicomponents.createinitiative;
+package dmtools.GUI.initiativeguicomponents.createinitiative.panels;
 
 import dmtools.playermgmt.PlayerParty;
 import javax.swing.JLabel;

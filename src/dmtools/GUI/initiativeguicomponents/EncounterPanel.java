@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dmtools.GUI.initiativeguicomponents.panels.masterpanels;
+package dmtools.GUI.initiativeguicomponents;
 
 import dmtools.GUI.LayoutConstants;
 import dmtools.GUI.initiativeguicomponents.panels.InitiativeButtonPanel;
