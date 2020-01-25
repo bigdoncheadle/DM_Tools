@@ -14,7 +14,6 @@ import java.util.ArrayList;
  *
  * @author A3
  */
-public class BatchFileHandler implements FileFilter{
     public BatchFileHandler() {
     }
     
@@ -22,13 +21,11 @@ public class BatchFileHandler implements FileFilter{
         ArrayList<PC> pcs = new ArrayList();
         File pcDir = new File("User/PCs");
         for (File i : pcDir.listFiles(this)) {
+        for (File i : pcDir.listFiles(new DndFileFilter(DndFileFilter.PC))) {
             pcs.add((PC) FileHandler.loadFromFile(i));
         }
         return pcs;
     }
 
-    @Override
-    public boolean accept(File f) {
-        return f.getPath().endsWith(".pc");
     }
 }
