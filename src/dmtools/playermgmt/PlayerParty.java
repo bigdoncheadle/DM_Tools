@@ -28,12 +28,12 @@ public class PlayerParty extends Party implements ReadWritable {
     }
     
     public static String getFilePath(String name) {
-        return "User/Parties/" + name.toUpperCase() + ".pty";
+        return "User/Parties/" + name + ".pty";
     }
     
     @Override
     public String getFilePath() {
-        return "User/Parties/" + super.getName().toUpperCase() + ".pty";
+        return "User/Parties/" + super.getName() + ".pty";
     }
 
     @Override
