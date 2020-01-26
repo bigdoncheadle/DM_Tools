@@ -8,7 +8,7 @@ package dmtools.GUI.entityguicomponents.dialogs;
 import dmtools.GUI.entityguicomponents.dialogs.panels.CreateACandHP;
 import dmtools.GUI.entityguicomponents.dialogs.panels.CreateSelectedSkills;
 import dmtools.GUI.entityguicomponents.dialogs.panels.CreateStatBlockPanel;
-import dmtools.GUI.entityguicomponents.comboboxes.DNDComboBox;
+import dmtools.GUI.entityguicomponents.comboboxes.EntityComboBox;
 import dmtools.filehandling.FileHandler;
 import dmtools.game.entities.PC;
 import dmtools.game.entities.characteristics.Alignment;
@@ -55,7 +55,7 @@ public class CreatePcDialog extends JDialog implements PropertyChangeListener {
     private static JComboBox raceCB;
     private static JComboBox alignmentCB;
     private static JComboBox classCB;
-    private static DNDComboBox levelBox;
+    private static EntityComboBox levelBox;
     private static CreateStatBlockPanel statBlockPanel;
     private static CreateSelectedSkills selectedSkillList;
     private static CreateACandHP acAndHP;
@@ -166,19 +166,19 @@ public class CreatePcDialog extends JDialog implements PropertyChangeListener {
 
         //Race
         raceLabel = new JLabel("Race");
-        raceCB = new DNDComboBox(DNDComboBox.RACE_BOX);
+        raceCB = new EntityComboBox(EntityComboBox.RACE_BOX);
 
         //Alignment
         alignmentLabel = new JLabel("Alignment");
-        alignmentCB = new DNDComboBox(DNDComboBox.ALIGNMENT_BOX);
+        alignmentCB = new EntityComboBox(EntityComboBox.ALIGNMENT_BOX);
 
         //Playable Class
         classLabel = new JLabel("Class");
-        classCB = new DNDComboBox(DNDComboBox.PLAYABLE_CLASS_BOX);
+        classCB = new EntityComboBox(EntityComboBox.PLAYABLE_CLASS_BOX);
 
         //Character Level
         cLevelLabel = new JLabel("Character Level");
-        levelBox = new DNDComboBox(DNDComboBox.CHARACTER_LEVEL_BOX);
+        levelBox = new EntityComboBox(EntityComboBox.CHARACTER_LEVEL_BOX);
 
         //StatBlock
         statBlockPanel = new CreateStatBlockPanel();
