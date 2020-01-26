@@ -50,11 +50,6 @@ public class Monster extends DNDEntity implements ReadWritable{
     }
 
     @Override
-    public int compareTo(DNDEntity o) {
-        return this.name.compareTo(o.name);
-    }
-
-    @Override
     public String getFilePath() {
         return "User/Monsters/" + this.name + ".mon";
     }
