@@ -132,6 +132,6 @@ public class PC extends DNDEntity implements ReadWritable{
 
     @Override
     public String getFilePath() {
-        return "User/PCs/" + this.name.toUpperCase() + ".pc";
+        return "User/PCs/" + this.name + ".pc";
     }
 }

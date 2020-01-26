@@ -8,7 +8,6 @@ package dmtools.filehandling;
 import dmtools.game.entities.Monster;
 import dmtools.game.entities.PC;
 import java.io.File;
-import java.io.FileFilter;
 import java.util.ArrayList;
 
 /**
@@ -37,5 +36,21 @@ public class BatchFileHandler {
             monsters.add((Monster) FileHandler.loadFromFile(i));
         }
         return monsters;
+    }
+    
+    public ArrayList<String> loadAllFileNames(Class target) {
+        ArrayList<String> allFileNames = new ArrayList();
+        if (target == Monster.class) {
+            File monDir = new File("User/Monsters");
+            for (File i : monDir.listFiles(
+                    new DndFileFilter(DndFileFilter.MONSTER))) {
+                allFileNames.add(cleanFileName(i.getName()));
+            }
+        }
+        return allFileNames;
+    }
+    
+    private String cleanFileName(String fileName) {
+        return fileName.split("\\.")[0];
     }
 }
