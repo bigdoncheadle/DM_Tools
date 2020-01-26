@@ -90,6 +90,25 @@ public class Horde extends DNDEntity {
     public int getSkillCheck(Skill skill) {
         return super.statBlock.getModifier(skill.getRelevantStat());
     }
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.name);
+        sb.append("\n");
+        sb.append("Members:");
+        sb.append("\n");
+        Iterator i = horde.keySet().iterator();
+        while(i.hasNext()) {
+            int x = (Integer)i.next();
+            sb.append(horde.get(x).name);
+            if (i.hasNext()) {
+                sb.append("\n");
+            }
+        }
+        
+        return sb.toString();
+    }
 
     @Override
     public int compareTo(DNDEntity o) {
