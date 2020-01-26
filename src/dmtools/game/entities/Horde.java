@@ -17,7 +17,7 @@ import java.util.Map;
  * @author A3
  */
 public class Horde extends DNDEntity {
-    private Map<Integer, Monster> horde;
+    private Map<Integer, Monster> members;
     private Monster hordeType;
     private int hordeSize;
     private int overallCount;
@@ -26,12 +26,12 @@ public class Horde extends DNDEntity {
         super(monster.getType() + " Horde", new StatBlock(), 
                 monster.getAC(), monster.getMaxHP());
         this.hordeType = monster;
-        horde = new HashMap();
+        members = new HashMap();
         for (int i = 1; i <= count; i ++) {
             Monster clone = new Monster(monster.getName() + " " + i, 
                     monster.getType(), monster.getAC(), 
                     monster.getMaxHP(), monster.getCR());
-            horde.put(i, clone);
+            members.put(i, clone);
             hordeSize = i;
             overallCount = i;
         }
@@ -51,29 +51,29 @@ public class Horde extends DNDEntity {
         Monster clone = new Monster(hordeType.getName() + " " + 
                 overallCount, hordeType.getType(), hordeType.getAC(), 
                 hordeType.getMaxHP(), hordeType.getCR());
-        horde.put(overallCount, clone);
+        members.put(overallCount, clone);
         return clone;
     }
     
     public void removeMonster(int monsterNumber) {
-        horde.remove(monsterNumber);
+        members.remove(monsterNumber);
         hordeSize --;
     }
     
     public Map<Integer, Monster> getMembers() {
-        return this.horde;
+        return this.members;
     }
     
     public Monster getMonster(int monsterNumber) {
-        return this.horde.get(monsterNumber);
+        return this.members.get(monsterNumber);
     }
     
     public int getCurrentHP(int monsterNumber) {
-        return horde.get(monsterNumber).getCurrentHP();
+        return members.get(monsterNumber).getCurrentHP();
     }
     
     public void setCurrentHP(int currentHP, int monsterNumber) {
-        horde.get(monsterNumber).setCurrentHP(currentHP);
+        members.get(monsterNumber).setCurrentHP(currentHP);
     }
     
     @Override
@@ -98,10 +98,10 @@ public class Horde extends DNDEntity {
         sb.append("\n");
         sb.append("Members:");
         sb.append("\n");
-        Iterator i = horde.keySet().iterator();
+        Iterator i = members.keySet().iterator();
         while(i.hasNext()) {
             int x = (Integer)i.next();
-            sb.append(horde.get(x).name);
+            sb.append(members.get(x).name);
             if (i.hasNext()) {
                 sb.append("\n");
             }
