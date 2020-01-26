@@ -20,7 +20,8 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
  *
  * @author A3
  */
-public class CreateMonsterDialog extends JDialog implements PropertyChangeListener {
+public class CreateMonsterDialog extends JDialog 
+        implements PropertyChangeListener {
 
     private final JOptionPane optionPane;
     private final MonsterCreationPanel monPanel;
