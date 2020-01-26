@@ -15,14 +15,18 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
+import javax.swing.JTextField;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EtchedBorder;
@@ -31,11 +35,13 @@ import javax.swing.border.EtchedBorder;
  *
  * @author A3
  */
-public class CreateHordePanel extends JPanel implements ActionListener {
+public class CreateHordePanel extends JPanel 
+        implements ActionListener, FocusListener {
 
     private MonsterComboBox monBox;
     private JButton createMon;
-    private JLabel countLabel;
+    private JLabel countLabel, idLabel;
+    private JTextField idField;
     private JSpinner countSpinner;
     private ArrayList<String> errors;
 
@@ -68,7 +74,7 @@ public class CreateHordePanel extends JPanel implements ActionListener {
                 highlight(countSpinner, true);
             }
         }
-
+        
         return errors;
     }
 
@@ -79,7 +85,7 @@ public class CreateHordePanel extends JPanel implements ActionListener {
                 Monster monsterType = (Monster) FileHandler.loadFromName(
                         monsterName, FileHandler.MONSTER_FILE);
                 int count = (Integer) countSpinner.getValue();
-                return new Horde(monsterType, count);
+                return new Horde(monsterType, count, getIdentifier());
             } catch (IOException e) {
                 throw new IOException("Error loading selected monster");
             }
@@ -89,6 +95,16 @@ public class CreateHordePanel extends JPanel implements ActionListener {
         }
     }
 
+    private String getIdentifier() {
+        if (idField.getText().equals("") || 
+                idField.getText().equals("(optional)")) {
+            Random r = new Random();
+            return "" + r.nextInt(100000);
+        } else {
+            return idField.getText();
+        }
+    }
+    
     private void createComponents() {
         setLayout(new GridBagLayout());
 
@@ -125,6 +141,23 @@ public class CreateHordePanel extends JPanel implements ActionListener {
         c.gridx = 1;
         c.gridy = 1;
         add(countSpinner, c);
+
+        // Identifier Label
+        idLabel = new JLabel("Identifier");
+        c = new GridBagConstraints();
+        c.insets = new Insets(5, 0, 0, 0);
+        c.gridx = 0;
+        c.gridy = 2;
+        add(idLabel, c);
+
+        // Identifier Field
+        idField = new JTextField("(optional)");
+        idField.addFocusListener(this);
+        c = new GridBagConstraints();
+        c.insets = new Insets(5, 0, 0, 0);
+        c.gridx = 1;
+        c.gridy = 2;
+        add(idField, c);
     }
 
     private void highlight(JComponent component, boolean shouldColor) {
@@ -157,5 +190,16 @@ public class CreateHordePanel extends JPanel implements ActionListener {
             monBox.refresh();
             monBox.setSelectedItem(monDialog.getMonster().getName());
         }
+    }
+
+    @Override
+    public void focusGained(FocusEvent e) {
+        if (idField.getText().equals("(optional)")) {
+            idField.setText("");
+        }
+    }
+
+    @Override
+    public void focusLost(FocusEvent e) {
     }
 }
