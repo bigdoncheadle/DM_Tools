@@ -38,6 +38,10 @@ public class Horde extends DNDEntity {
         horde.add(clone);
     }
     
+    public void removeMonster(int monsterNumber) {
+        horde.remove(monsterNumber - 1);
+    }
+    
     public List<Monster> getHorde() {
         return this.horde;
     }
