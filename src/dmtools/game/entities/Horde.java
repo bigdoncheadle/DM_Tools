@@ -31,6 +31,10 @@ public class Horde extends DNDEntity {
         }
     }
     
+    public Monster getHordeType() {
+        return this.hordeType;
+    }
+    
     public void addMonster() {
         Monster clone = new Monster(hordeType.getName() + " " + 
                 horde.size() + 1, hordeType.getType(), hordeType.getAC(), 
