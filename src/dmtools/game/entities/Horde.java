@@ -124,7 +124,28 @@ public class Horde extends DNDEntity {
     }
 
     @Override
+    public boolean equals(Object inQuestion) {
+        if (inQuestion == null) {
+            return false;
+        }
+
+        if (getClass() != inQuestion.getClass()) {
+            return false;
+        }
+
+        Horde compared = (Horde) inQuestion;
+     
+
+        return getUniqueName().equals(compared.getUniqueName());
+    }
+
+    @Override
     public int compareTo(DNDEntity o) {
-        return this.name.compareTo(o.name);
+        if (o.getClass() == Horde.class) {
+            Horde h = (Horde) o;
+            return getUniqueName().compareToIgnoreCase(h.getUniqueName());
+        } else {
+            return name.compareToIgnoreCase(o.getName());
+        }
     }
 }
