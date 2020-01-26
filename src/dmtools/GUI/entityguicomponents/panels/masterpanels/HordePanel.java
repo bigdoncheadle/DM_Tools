@@ -6,7 +6,7 @@
 package dmtools.GUI.entityguicomponents.panels.masterpanels;
 
 import dmtools.GUI.LayoutConstants;
-import dmtools.GUI.entityguicomponents.panels.horde.AddMoreMembersDialog;
+import dmtools.GUI.entityguicomponents.horde.AddMoreMembersDialog;
 import dmtools.GUI.main.DMToolsGui;
 import dmtools.game.entities.Horde;
 import dmtools.game.entities.Monster;

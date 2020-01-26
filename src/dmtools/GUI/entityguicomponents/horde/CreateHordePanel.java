@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dmtools.GUI.monsters.hordes;
+package dmtools.GUI.entityguicomponents.horde;
 
-import dmtools.GUI.monsters.CreateMonsterDialog;
+import dmtools.GUI.entityguicomponents.monsters.CreateMonsterDialog;
 import dmtools.filehandling.FileHandler;
 import dmtools.game.entities.Horde;
 import dmtools.game.entities.Monster;

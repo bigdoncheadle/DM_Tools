@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dmtools.GUI.monsters;
+package dmtools.GUI.entityguicomponents.monsters;
 
 import dmtools.game.entities.Monster;
 import java.awt.Color;

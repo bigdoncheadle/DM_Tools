@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dmtools.GUI.monsters.hordes;
+package dmtools.GUI.entityguicomponents.horde;
 
 import dmtools.filehandling.BatchFileHandler;
 import dmtools.game.entities.Monster;
