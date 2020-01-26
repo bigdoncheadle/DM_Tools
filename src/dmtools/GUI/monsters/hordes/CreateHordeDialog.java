@@ -68,7 +68,7 @@ public class CreateHordeDialog extends JDialog
              */
             List<String> errors = hordePanel.hasValidInfo();
             if (errors.isEmpty()) {
-                //create the monster here
+                //create the horde here
                 try {
                     this.horde = hordePanel.getCreatedHorde();
                 } catch (Exception ex) {
