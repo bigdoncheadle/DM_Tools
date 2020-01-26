@@ -53,7 +53,7 @@ public class CreateHordePanel extends JPanel implements ActionListener {
             errors.add("-Select a Monster Type");
             highlight(monBox, true);
         }
-        
+
         // Monster Count
         highlight(countSpinner, false);
         // if blank
@@ -61,31 +61,24 @@ public class CreateHordePanel extends JPanel implements ActionListener {
             errors.add("-Monster Count cannot be blank");
             highlight(countSpinner, true);
         } else {
-            try {
-                int count = Integer.parseInt((String)countSpinner.getValue());
-                // if count < 2
-                if (count < 2) {
-                    errors.add("-A Horde must be >1 Monster");
-                    highlight(countSpinner, true);
-                }
-                
-            } catch (NumberFormatException e) {
-                //if count is a non-number
-                errors.add("-Monster Count must be an Integer");
+            int count = (Integer) countSpinner.getValue();
+            // if count < 2
+            if (count < 2) {
+                errors.add("-A Horde must be >1 Monster");
                 highlight(countSpinner, true);
             }
         }
-        
+
         return errors;
     }
-    
-    public Horde getCreatedHorde () throws Exception {
+
+    public Horde getCreatedHorde() throws Exception {
         if (hasValidInfo().isEmpty()) {
-            String monsterName = (String)monBox.getSelectedItem();
+            String monsterName = (String) monBox.getSelectedItem();
             try {
                 Monster monsterType = (Monster) FileHandler.loadFromName(
                         monsterName, FileHandler.MONSTER_FILE);
-                int count = Integer.parseInt((String)countSpinner.getValue());
+                int count = (Integer) countSpinner.getValue();
                 return new Horde(monsterType, count);
             } catch (IOException e) {
                 throw new IOException("Error loading selected monster");
