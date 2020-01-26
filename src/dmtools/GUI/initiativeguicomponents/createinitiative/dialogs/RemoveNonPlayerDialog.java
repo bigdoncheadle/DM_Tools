@@ -12,11 +12,11 @@ import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 import javax.swing.DefaultListModel;
 import javax.swing.JDialog;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 /**
@@ -65,6 +65,7 @@ public class RemoveNonPlayerDialog extends JDialog
     private void createComponents(ArrayList<DNDEntity> entities) {
         DefaultListModel listModel = new DefaultListModel();
         list = new JList(listModel);
+        list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
         names = new HashMap();
         int j = 0;
