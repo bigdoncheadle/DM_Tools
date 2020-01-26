@@ -170,7 +170,7 @@ public class PartyMgmtPanel2 extends JPanel implements ActionListener {
             String pcName = toDelete.getName();
 
             int n = JOptionPane.showOptionDialog(DMToolsGui.frame,
-                    "Are you sure you want to permanently "
+                    "Are you sure you want to permanently delete "
                     + pcName
                     + "?",
                     "Delete Playable Character",
