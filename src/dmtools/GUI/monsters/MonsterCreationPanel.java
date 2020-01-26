@@ -94,7 +94,7 @@ public class MonsterCreationPanel extends JPanel {
             return new Monster(name, name, acValue, hpValue, crValue);
         } else {
             throw new IllegalArgumentException(
-                    "There are unaddressed errors in one or more TextFields");
+                    "There are unaddressed errors in one or more fields");
         }
     }
 

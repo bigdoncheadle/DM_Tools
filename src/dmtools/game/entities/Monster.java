@@ -56,7 +56,7 @@ public class Monster extends DNDEntity implements ReadWritable{
 
     @Override
     public String getFilePath() {
-        return "User/Monsters/" + this.name.toUpperCase() + ".mon";
+        return "User/Monsters/" + this.name + ".mon";
     }
     
     public static String getFilePath(String name) {
