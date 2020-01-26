@@ -8,26 +8,32 @@ package dmtools.game.entities;
 import dmtools.game.entities.numericals.StatBlock;
 import dmtools.game.entities.numericals.enums.Skill;
 import dmtools.game.entities.numericals.enums.Stat;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  *
  * @author A3
  */
 public class Horde extends DNDEntity {
-    private List<Monster> horde;
+    private Map<Integer, Monster> horde;
     private Monster hordeType;
+    private int hordeSize;
+    private int overallCount;
+    
     public Horde(Monster monster,int count) {
         super(monster.getType() + " Horde", new StatBlock(), 
                 monster.getAC(), monster.getMaxHP());
         this.hordeType = monster;
-        horde = new ArrayList();
+        horde = new HashMap();
         for (int i = 1; i <= count; i ++) {
             Monster clone = new Monster(monster.getName() + " " + i, 
                     monster.getType(), monster.getAC(), 
                     monster.getMaxHP(), monster.getCR());
-            horde.add(clone);
+            horde.put(i, clone);
+            hordeSize = i;
+            overallCount = i;
         }
     }
     
@@ -35,31 +41,39 @@ public class Horde extends DNDEntity {
         return this.hordeType;
     }
     
-    public void addMonster() {
+    public int getSize() {
+        return this.hordeSize;
+    }
+    
+    public Monster addMonster() {
+        hordeSize ++;
+        overallCount ++;
         Monster clone = new Monster(hordeType.getName() + " " + 
-                horde.size() + 1, hordeType.getType(), hordeType.getAC(), 
+                overallCount, hordeType.getType(), hordeType.getAC(), 
                 hordeType.getMaxHP(), hordeType.getCR());
-        horde.add(clone);
+        horde.put(overallCount, clone);
+        return clone;
     }
     
     public void removeMonster(int monsterNumber) {
-        horde.remove(monsterNumber - 1);
+        horde.remove(monsterNumber);
+        hordeSize --;
     }
     
-    public List<Monster> getHorde() {
+    public Map<Integer, Monster> getMembers() {
         return this.horde;
     }
     
     public Monster getMonster(int monsterNumber) {
-        return this.horde.get(monsterNumber - 1);
+        return this.horde.get(monsterNumber);
     }
     
     public int getCurrentHP(int monsterNumber) {
-        return horde.get(monsterNumber - 1).getCurrentHP();
+        return horde.get(monsterNumber).getCurrentHP();
     }
     
     public void setCurrentHP(int currentHP, int monsterNumber) {
-        horde.get(monsterNumber - 1).setCurrentHP(currentHP);
+        horde.get(monsterNumber).setCurrentHP(currentHP);
     }
     
     @Override
@@ -81,5 +95,4 @@ public class Horde extends DNDEntity {
     public int compareTo(DNDEntity o) {
         return this.name.compareTo(o.name);
     }
-    
 }
