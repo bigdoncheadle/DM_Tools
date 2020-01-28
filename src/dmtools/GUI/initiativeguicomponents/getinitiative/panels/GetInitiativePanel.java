@@ -28,7 +28,7 @@ public class GetInitiativePanel extends JPanel {
     private PlayerGetInitiativePanel pIniPanel;
     private NonPlayerGetInitiativePanel nIniPanel;
 
-    private JButton beginButton, addMonButton, addHordeButton;
+    private JButton beginButton, addMonButton, addHordeButton, removeButton;
     private MonsterComboBox monBox;
 
     public GetInitiativePanel(PlayerParty party) {
@@ -49,7 +49,7 @@ public class GetInitiativePanel extends JPanel {
         c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
-        c.gridwidth = 8;
+        c.gridwidth = 9;
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.CENTER;
         c.insets = new Insets(5, 5, 0, 5);
@@ -62,10 +62,10 @@ public class GetInitiativePanel extends JPanel {
         c.gridx = 1;
         c.gridy = 1;
         c.gridheight = 4;
-        c.gridwidth = 2;
+        c.gridwidth = 3;
         c.fill = GridBagConstraints.BOTH;
         c.anchor = GridBagConstraints.PAGE_START;
-        c.weightx = 0.1;
+        c.weightx = 0.15;
         c.insets = new Insets(5, 5, 0, 5);
         add(pIniPanel, c);
         
@@ -73,13 +73,13 @@ public class GetInitiativePanel extends JPanel {
         nIniPanel = new NonPlayerGetInitiativePanel();
 //        nIniPanel.setBackground(Color.pink);
         c = new GridBagConstraints();
-        c.gridx = 4;
+        c.gridx = 5;
         c.gridy = 1;
         c.gridheight = 2;
         c.gridwidth = 3;
         c.fill = GridBagConstraints.BOTH;
         c.anchor = GridBagConstraints.PAGE_START;
-        c.weightx = 0.1;
+        c.weightx = 0.15;
         c.weighty = 0.1;
         c.insets = new Insets(5, 5, 5, 5);
         add(nIniPanel, c);
@@ -87,55 +87,56 @@ public class GetInitiativePanel extends JPanel {
         // Monster Combobox
         monBox = new MonsterComboBox("-Create Monster-");
         c = new GridBagConstraints();
-        c.gridx = 4;
+        c.gridx = 5;
         c.gridy = 3;
         c.gridwidth = 3;
         c.fill = GridBagConstraints.HORIZONTAL;
         c.insets = new Insets(0, 5, 0, 5);
+        c.weightx = 0.15;
         add(monBox, c);
 
         // Add Monster Button
         addHordeButton = new JButton("+ Horde");
         addMonButton = new JButton("+");
-        addMonButton.setPreferredSize(addHordeButton.getPreferredSize());
+        removeButton = new JButton("-");
         c = new GridBagConstraints();
-        c.gridx = 4;
+        c.gridx = 5;
         c.gridy = 4;
         c.insets = new Insets(0, 5, 0, 0);
+        c.fill = GridBagConstraints.HORIZONTAL;
         add(addMonButton, c);
 
-        // Add Horde Button
+        //Add Horde Button
         c = new GridBagConstraints();
         c.gridx = 6;
         c.gridy = 4;
-        c.insets = new Insets(0, 0, 0, 5);
+        c.insets = new Insets(0, 0, 0, 0);
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0.05;
         add(addHordeButton, c);
         
-        //Filler between buttons
-        JPanel filler = new JPanel();
+        // Remove Button
         c = new GridBagConstraints();
-        filler = new JPanel();
-        filler.setBackground(getBackground());
-//        filler.setBackground(Color.red);
-        c.gridx = 5;
+        c.gridx = 7;
         c.gridy = 4;
-        c.fill = GridBagConstraints.BOTH;
-        c.weightx = 0.1;
-        add(filler, c);
+        c.insets = new Insets(0, 0, 0, 5);
+        c.fill = GridBagConstraints.HORIZONTAL;
+        add(removeButton, c);
+        
 
         // Begin Button
         beginButton = new JButton("Begin Encounter");
         c = new GridBagConstraints();
         c.gridx = 1;
         c.gridy = 5;
-        c.gridwidth = 6;
+        c.gridwidth = 7;
         c.fill = GridBagConstraints.HORIZONTAL;
         c.insets = new Insets(5, 5, 5, 5);
         add(beginButton, c);
         
         
         // Left Filler
-        filler = new JPanel();
+        JPanel filler = new JPanel();
         c = new GridBagConstraints();
         filler = new JPanel();
         filler.setBackground(getBackground());
@@ -152,7 +153,7 @@ public class GetInitiativePanel extends JPanel {
         filler.setBackground(getBackground());
 //        filler.setBackground(Color.red);
         c = new GridBagConstraints();
-        c.gridx = 3;
+        c.gridx = 4;
         c.gridy = 1;
         c.gridheight = 4;
         c.fill = GridBagConstraints.BOTH;
@@ -164,7 +165,7 @@ public class GetInitiativePanel extends JPanel {
         filler = new JPanel();
         filler.setBackground(getBackground());
 //        filler.setBackground(Color.red);
-        c.gridx = 7;
+        c.gridx = 8;
         c.gridy = 1;
         c.gridheight = 5;
         c.fill = GridBagConstraints.BOTH;
