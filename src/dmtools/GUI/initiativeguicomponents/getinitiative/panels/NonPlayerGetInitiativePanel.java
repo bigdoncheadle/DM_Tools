@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dmtools.GUI.initiativeguicomponents.createinitiative.panels;
+package dmtools.GUI.initiativeguicomponents.getinitiative.panels;
 
 import dmtools.game.entities.DNDEntity;
 import java.awt.Font;

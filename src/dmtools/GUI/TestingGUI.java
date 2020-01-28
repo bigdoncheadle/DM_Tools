@@ -5,15 +5,21 @@
  */
 package dmtools.GUI;
 
+import dmtools.GUI.entityguicomponents.horde.CreateHordeDialog;
+import dmtools.GUI.initiativeguicomponents.getinitiative.dialogs.RemoveNonPlayerDialog;
+import dmtools.GUI.initiativeguicomponents.getinitiative.panels.NonPlayerGetInitiativePanel;
 import dmtools.GUI.partymgmt.PartyMgmtPanel2;
 import dmtools.filehandling.FileHandler;
+import dmtools.game.entities.DNDEntity;
+import dmtools.game.entities.Horde;
 import dmtools.game.entities.PC;
 import dmtools.playermgmt.PlayerParty;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import static java.util.Collections.list;
+import java.util.ArrayList;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
@@ -22,7 +28,11 @@ import javax.swing.WindowConstants;
  * @author A3
  */
 public class TestingGUI implements Runnable, ActionListener {
+
     private PartyMgmtPanel2 partyPanel;
+    private NonPlayerGetInitiativePanel nonPlayerPanel;
+    private JButton add, remove;
+
     public TestingGUI() {
     }
 
@@ -35,7 +45,7 @@ public class TestingGUI implements Runnable, ActionListener {
         frame.setVisible(true);
 
     }
-    
+
     private void addComponents(Container container) {
         container.setLayout(new BoxLayout(container, BoxLayout.PAGE_AXIS));
         PlayerParty party = new PlayerParty("Testing Party");
@@ -47,13 +57,38 @@ public class TestingGUI implements Runnable, ActionListener {
             partyPanel = new PartyMgmtPanel2(party);
         } catch (Exception e) {
         }
-        
-        container.add(partyPanel);
+
+//        container.addEntity(new PlayerGetInitiativePanel(party));
+        nonPlayerPanel = new NonPlayerGetInitiativePanel();
+        container.add(nonPlayerPanel);
+        add = new JButton("ADD");
+        add.addActionListener(this);
+        container.add(add);
+
+        remove = new JButton("REMOVE");
+        remove.addActionListener(this);
+        container.add(remove);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (e.getSource().equals(add)) {
+            CreateHordeDialog cHorde = new CreateHordeDialog(null);
+            Horde h = cHorde.getHorde();
+            if (h != null) {
+                nonPlayerPanel.addEntity(h);
+            }
+        }
+        
+        if (e.getSource().equals(remove)) {
+            RemoveNonPlayerDialog removeNP = new RemoveNonPlayerDialog(null, 
+                    nonPlayerPanel.getEntities());
+            ArrayList<DNDEntity> toRemove = removeNP.getEntitiesToRemove();
+            if (!toRemove.isEmpty()) {
+                for (DNDEntity i : toRemove) {
+                    nonPlayerPanel.removeEntity(i);
+                }
+            }
+        }
     }
-
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dmtools.GUI.initiativeguicomponents.createinitiative.dialogs;
+package dmtools.GUI.initiativeguicomponents.getinitiative.dialogs;
 
 import dmtools.game.entities.DNDEntity;
 import java.awt.Frame;
