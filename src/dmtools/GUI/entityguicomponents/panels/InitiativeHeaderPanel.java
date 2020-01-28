@@ -14,10 +14,10 @@ import javax.swing.JPanel;
  *
  * @author A3
  */
-public class InitiativePanel extends JPanel{
+public class InitiativeHeaderPanel extends JPanel{
     private final int initiative;
 
-    public InitiativePanel(int initiative) {
+    public InitiativeHeaderPanel(int initiative) {
         super(new GridBagLayout());
         this.initiative = initiative;
         
