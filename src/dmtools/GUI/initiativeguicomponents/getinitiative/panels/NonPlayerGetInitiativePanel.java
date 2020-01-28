@@ -6,6 +6,7 @@
 package dmtools.GUI.initiativeguicomponents.getinitiative.panels;
 
 import dmtools.game.entities.DNDEntity;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -44,9 +45,6 @@ public class NonPlayerGetInitiativePanel extends JPanel {
         entities.add(e);
         Collections.sort(entities);
 
-        int workingGridY = entities.indexOf(e) + 1;
-        GridBagConstraints c;
-
         // Label
         JLabel name = new JLabel(e.getName());
         labels.put(e, name);
@@ -72,10 +70,10 @@ public class NonPlayerGetInitiativePanel extends JPanel {
     }
 
     private void updateEntityList() {
+        int fillerY = 1;
+        GridBagConstraints c = new GridBagConstraints();
         for (DNDEntity i : entities) {
-
             // Label
-            GridBagConstraints c = new GridBagConstraints();
             c.gridx = 0;
             c.gridy = entities.indexOf(i) + 1;
             c.weightx = 1;
@@ -88,7 +86,10 @@ public class NonPlayerGetInitiativePanel extends JPanel {
             c.anchor = GridBagConstraints.LINE_START;
             c.insets = new Insets(5, 0, 0, 5);
             add(inputs.get(i), c);
+            fillerY = c.gridy;
         }
+        
+        addFiller(fillerY);
     }
 
     private void createComponents() {
@@ -102,5 +103,21 @@ public class NonPlayerGetInitiativePanel extends JPanel {
         c.gridwidth = 2;
         c.insets = new Insets(5, 5, 0, 5);
         add(header, c);
+        
+        addFiller(1);
+    }
+    
+    private void addFiller(int index) {
+        GridBagConstraints c = new GridBagConstraints();
+        JPanel filler = new JPanel();
+//        filler.setBackground(getBackground());
+        filler.setBackground(Color.red);
+        c.gridx = 0;
+        c.gridy = index;
+        c.gridwidth = 2;
+        c.fill = GridBagConstraints.BOTH;
+        c.weighty = 0.1;
+        add(filler, c);
+        
     }
 }
