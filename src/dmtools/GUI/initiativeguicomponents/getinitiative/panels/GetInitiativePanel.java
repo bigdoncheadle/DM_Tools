@@ -49,7 +49,7 @@ public class GetInitiativePanel extends JPanel {
         c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
-        c.gridwidth = 5;
+        c.gridwidth = 7;
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.CENTER;
         c.insets = new Insets(5, 5, 0, 5);
@@ -59,7 +59,7 @@ public class GetInitiativePanel extends JPanel {
         pIniPanel = new PlayerGetInitiativePanel(party);
         pIniPanel.setBackground(Color.LIGHT_GRAY);
         c = new GridBagConstraints();
-        c.gridx = 0;
+        c.gridx = 1;
         c.gridy = 1;
         c.gridheight = 4;
         c.gridwidth = 2;
@@ -72,7 +72,7 @@ public class GetInitiativePanel extends JPanel {
         nIniPanel = new NonPlayerGetInitiativePanel();
         nIniPanel.setBackground(Color.pink);
         c = new GridBagConstraints();
-        c.gridx = 3;
+        c.gridx = 4;
         c.gridy = 1;
         c.gridheight = 2;
         c.gridwidth = 2;
@@ -85,7 +85,7 @@ public class GetInitiativePanel extends JPanel {
         // Monster Combobox
         monBox = new MonsterComboBox("-Create Monster-");
         c = new GridBagConstraints();
-        c.gridx = 3;
+        c.gridx = 4;
         c.gridy = 3;
         c.gridwidth = 2;
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -97,14 +97,14 @@ public class GetInitiativePanel extends JPanel {
         addMonButton = new JButton("+");
         addMonButton.setPreferredSize(addHordeButton.getPreferredSize());
         c = new GridBagConstraints();
-        c.gridx = 3;
+        c.gridx = 4;
         c.gridy = 4;
         c.insets = new Insets(0, 5, 0, 0);
         add(addMonButton, c);
 
         // Add Horde Button
         c = new GridBagConstraints();
-        c.gridx = 4;
+        c.gridx = 5;
         c.gridy = 4;
         c.insets = new Insets(0, 0, 0, 5);
         add(addHordeButton, c);
@@ -112,28 +112,48 @@ public class GetInitiativePanel extends JPanel {
         // Begin Button
         beginButton = new JButton("Begin Encounter");
         c = new GridBagConstraints();
-        c.gridx = 0;
+        c.gridx = 1;
         c.gridy = 5;
         c.gridwidth = 5;
         c.fill = GridBagConstraints.HORIZONTAL;
         c.insets = new Insets(5, 5, 5, 5);
         add(beginButton, c);
         
-        // Filler
+        // Middle Filler
         JPanel filler = new JPanel();
-//        filler.setBackground(pIniPanel.getBackground());
+//        filler.setBackground(getBackground());
         filler.setBackground(Color.red);
         c = new GridBagConstraints();
-        c.gridx = 2;
+        c.gridx = 3;
         c.gridy = 1;
         c.gridheight = 4;
+        c.fill = GridBagConstraints.BOTH;
+        c.weightx = 0.6;
+        add(filler, c);
+        
+        // Left Filler
+        c = new GridBagConstraints();
+        filler = new JPanel();
+//        filler.setBackground(getBackground());
+        filler.setBackground(Color.red);
+        c.gridx = 0;
+        c.gridy = 1;
+        c.gridheight = 5;
         c.fill = GridBagConstraints.BOTH;
         c.weightx = 0.2;
         add(filler, c);
         
+        // Right Filler
         c = new GridBagConstraints();
-        c.gridx = 2;
-        c.gridy = 0;
+        filler = new JPanel();
+//        filler.setBackground(pIniPanel.getBackground());
+        filler.setBackground(Color.red);
+        c.gridx = 6;
+        c.gridy = 1;
+        c.gridheight = 5;
+        c.fill = GridBagConstraints.BOTH;
+        c.weightx = 0.2;
+        add(filler, c);
 
     }
 }
