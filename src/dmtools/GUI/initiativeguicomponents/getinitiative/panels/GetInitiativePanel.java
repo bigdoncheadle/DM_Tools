@@ -12,6 +12,8 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,9 +23,9 @@ import javax.swing.SwingConstants;
  *
  * @author A3
  */
-public class GetInitiativePanel extends JPanel {
+public class GetInitiativePanel extends JPanel implements ActionListener{
 
-    private PlayerParty party;
+    private final PlayerParty party;
     private JLabel header;
     private PlayerGetInitiativePanel pIniPanel;
     private NonPlayerGetInitiativePanel nIniPanel;
@@ -172,5 +174,29 @@ public class GetInitiativePanel extends JPanel {
         c.weightx = 0.2;
         add(filler, c);
 
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // Add Monster
+        if (e.getSource().equals(addMonButton)) {
+            
+        }
+        
+        // Add horde
+        if (e.getSource().equals(addHordeButton)) {
+            
+        }
+        
+        // Remove Monster
+        if (e.getSource().equals(removeButton)) {
+            
+        }
+        
+        // Begin
+        
+        if (e.getSource().equals(beginButton)) {
+            
+        }
     }
 }
