@@ -14,11 +14,21 @@ import javax.swing.JComboBox;
  * @author A3
  */
 public class MonsterComboBox extends JComboBox {
+    private final String index0;
+    
+    public MonsterComboBox(String index0) {
+        super();
+        this.index0 = index0;
+        fillBox();
+    }
 
     public MonsterComboBox() {
         super();
+        this.index0 = "-Select a Monster-";
         fillBox();
     }
+    
+    
     
     public void refresh() {
         this.removeAllItems();
@@ -27,7 +37,7 @@ public class MonsterComboBox extends JComboBox {
 
     private void fillBox() {
         BatchFileHandler batch = new BatchFileHandler();
-        this.addItem("-Select a Monster-");
+        this.addItem(index0);
         for (String i : batch.loadAllFileNames(Monster.class)) {
             this.addItem(i);
         }
