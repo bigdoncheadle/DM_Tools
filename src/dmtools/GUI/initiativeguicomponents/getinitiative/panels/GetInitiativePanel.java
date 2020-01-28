@@ -96,7 +96,7 @@ public class GetInitiativePanel extends JPanel {
         add(monBox, c);
 
         // Add Monster Button
-        addHordeButton = new JButton("+ Horde");
+        addHordeButton = new JButton("Horde");
         addMonButton = new JButton("+");
         removeButton = new JButton("-");
         c = new GridBagConstraints();
