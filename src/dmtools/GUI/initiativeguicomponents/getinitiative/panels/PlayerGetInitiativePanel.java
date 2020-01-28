@@ -8,6 +8,7 @@ package dmtools.GUI.initiativeguicomponents.getinitiative.panels;
 import dmtools.game.entities.PC;
 import dmtools.playermgmt.Party;
 import dmtools.playermgmt.PlayerParty;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -27,6 +28,7 @@ public class PlayerGetInitiativePanel extends JPanel {
     private PlayerParty party;
     private JLabel header;
     private HashMap<PC, JTextField> inputs;
+    private int fillerY;
 
     public PlayerGetInitiativePanel(PlayerParty party) {
         this.party = party;
@@ -47,6 +49,7 @@ public class PlayerGetInitiativePanel extends JPanel {
         c.insets = new Insets(5, 5, 0, 5);
         c.anchor = GridBagConstraints.CENTER;
         add(header, c);
+        fillerY = c.gridy + 1;
         
         // Each Player
         c = new GridBagConstraints();
@@ -81,6 +84,19 @@ public class PlayerGetInitiativePanel extends JPanel {
             JTextField tf = new JTextField(2);
             inputs.put(pc, tf);
             this.add(tf, c);
+            fillerY = c.gridy + 1;
         }
+        
+        // Filler
+        JPanel filler = new JPanel();
+        filler.setBackground(getBackground());
+//        filler.setBackground(Color.red);
+        c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = fillerY;
+        c.gridwidth = 2;
+        c.fill = GridBagConstraints.BOTH;
+        c.weighty = 0.1;
+        add(filler, c);
     }
 }
