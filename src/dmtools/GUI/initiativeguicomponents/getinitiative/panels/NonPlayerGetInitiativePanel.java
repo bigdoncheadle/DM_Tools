@@ -5,6 +5,7 @@
  */
 package dmtools.GUI.initiativeguicomponents.getinitiative.panels;
 
+import dmtools.GUI.LayoutConstants;
 import dmtools.game.entities.DNDEntity;
 import java.awt.Color;
 import java.awt.Font;
@@ -94,6 +95,7 @@ public class NonPlayerGetInitiativePanel extends JPanel {
 
     private void createComponents() {
         setLayout(new GridBagLayout());
+        setBackground(LayoutConstants.BEIGE);
         JLabel header = new JLabel("Non Players");
         header.setFont(header.getFont().deriveFont(Font.BOLD, 20f));
 

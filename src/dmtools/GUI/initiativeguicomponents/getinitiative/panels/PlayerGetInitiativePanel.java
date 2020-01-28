@@ -5,10 +5,10 @@
  */
 package dmtools.GUI.initiativeguicomponents.getinitiative.panels;
 
+import dmtools.GUI.LayoutConstants;
 import dmtools.game.entities.PC;
 import dmtools.playermgmt.Party;
 import dmtools.playermgmt.PlayerParty;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -38,6 +38,7 @@ public class PlayerGetInitiativePanel extends JPanel {
 
     private void createComponents() {
         setLayout(new GridBagLayout());
+        setBackground(LayoutConstants.BEIGE);
 
         // Header
         header = new JLabel(party.getName());
