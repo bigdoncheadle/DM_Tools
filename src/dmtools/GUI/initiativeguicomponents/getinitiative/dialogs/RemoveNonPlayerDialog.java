@@ -54,6 +54,10 @@ public class RemoveNonPlayerDialog extends JDialog
     }
     
     public ArrayList<DNDEntity> getEntitiesToRemove() {
+        if (namesToRemove == null) {
+            return null;
+        }
+        
         ArrayList<DNDEntity> toRemove = new ArrayList();
         for (int i = 0; i < namesToRemove.size(); i ++) {
             toRemove.add(names.get(namesToRemove.get(i)));
