@@ -39,6 +39,11 @@ public class PartyMgmtPanel extends JPanel implements ActionListener {
         setLayout(new GridBagLayout());
         createComponents();
     }
+    
+    public PlayerParty getParty() {
+        this.party = partyDoubleList.getUpdatedParty();
+        return this.party;
+    }
 
     private void createComponents() {
         GridBagConstraints c = new GridBagConstraints();
