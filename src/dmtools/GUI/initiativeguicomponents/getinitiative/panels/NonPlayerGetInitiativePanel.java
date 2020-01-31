@@ -54,6 +54,8 @@ public class NonPlayerGetInitiativePanel extends JPanel {
         JTextField tf = new JTextField(2);
         inputs.put(e, tf);
 
+        removeAll();
+        createHeader();
         updateEntityList();
         revalidate();
         repaint();
@@ -89,13 +91,18 @@ public class NonPlayerGetInitiativePanel extends JPanel {
             add(inputs.get(i), c);
             fillerY = c.gridy;
         }
-        
+
         addFiller(fillerY);
     }
 
     private void createComponents() {
         setLayout(new GridBagLayout());
         setBackground(LayoutConstants.BEIGE);
+        createHeader();
+        addFiller(1);
+    }
+
+    private void createHeader() {
         JLabel header = new JLabel("Non Players");
         header.setFont(header.getFont().deriveFont(Font.BOLD, 20f));
 
@@ -105,10 +112,8 @@ public class NonPlayerGetInitiativePanel extends JPanel {
         c.gridwidth = 2;
         c.insets = new Insets(5, 5, 0, 5);
         add(header, c);
-        
-        addFiller(1);
     }
-    
+
     private void addFiller(int index) {
         GridBagConstraints c = new GridBagConstraints();
         JPanel filler = new JPanel();
@@ -120,6 +125,5 @@ public class NonPlayerGetInitiativePanel extends JPanel {
         c.fill = GridBagConstraints.BOTH;
         c.weighty = 0.1;
         add(filler, c);
-        
     }
 }
