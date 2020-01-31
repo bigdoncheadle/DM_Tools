@@ -75,21 +75,23 @@ public class NonPlayerGetInitiativePanel extends JPanel {
     private void updateEntityList() {
         int fillerY = 1;
         GridBagConstraints c = new GridBagConstraints();
-        for (DNDEntity i : entities) {
-            // Label
-            c.gridx = 0;
-            c.gridy = entities.indexOf(i) + 1;
-            c.weightx = 1;
-            c.anchor = GridBagConstraints.FIRST_LINE_END;
-            c.insets = new Insets(5, 5, 0, 5);
-            add(labels.get(i), c);
+        if (!labels.isEmpty() && !inputs.isEmpty()) {
+            for (DNDEntity i : entities) {
+                // Label
+                c.gridx = 0;
+                c.gridy = entities.indexOf(i) + 1;
+                c.weightx = 1;
+                c.anchor = GridBagConstraints.FIRST_LINE_END;
+                c.insets = new Insets(5, 5, 0, 5);
+                add(labels.get(i), c);
 
-            // TextField
-            c.gridx = 1;
-            c.anchor = GridBagConstraints.LINE_START;
-            c.insets = new Insets(5, 0, 0, 5);
-            add(inputs.get(i), c);
-            fillerY = c.gridy;
+                // TextField
+                c.gridx = 1;
+                c.anchor = GridBagConstraints.LINE_START;
+                c.insets = new Insets(5, 0, 0, 5);
+                add(inputs.get(i), c);
+                fillerY = c.gridy + 1;
+            }
         }
 
         addFiller(fillerY);
