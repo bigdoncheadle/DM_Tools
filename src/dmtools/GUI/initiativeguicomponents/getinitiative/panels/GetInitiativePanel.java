@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -115,6 +116,9 @@ public class GetInitiativePanel extends JPanel implements ActionListener {
         removeButton = new JButton("-");
         removeButton.addActionListener(this);
 
+        beginButton = new JButton("Begin Encounter");
+        beginButton.addActionListener(this);
+
         // Add Monster Button
         c = new GridBagConstraints();
         c.gridx = 5;
@@ -141,7 +145,6 @@ public class GetInitiativePanel extends JPanel implements ActionListener {
         add(removeButton, c);
 
         // Begin Button
-        beginButton = new JButton("Begin Encounter");
         c = new GridBagConstraints();
         c.gridx = 1;
         c.gridy = 5;
@@ -224,7 +227,7 @@ public class GetInitiativePanel extends JPanel implements ActionListener {
         // Remove Monster
         if (e.getSource().equals(removeButton)) {
             ArrayList<DNDEntity> currentEntities = nIniPanel.getEntities();
-            
+
             if (!currentEntities.isEmpty()) {
                 RemoveNonPlayerDialog rnpDialog = new RemoveNonPlayerDialog(
                         null, currentEntities);
@@ -238,7 +241,19 @@ public class GetInitiativePanel extends JPanel implements ActionListener {
 
         // Begin
         if (e.getSource().equals(beginButton)) {
-
+            if (nIniPanel.hasValidInfo() && pIniPanel.hasValidInfo()) {
+                
+                /*
+                * BEGIN ENCOUNTER HERE
+                */
+                
+                
+            } else {
+                JOptionPane.showMessageDialog(null,
+                        "Some initiatives are invalid or incomplete",
+                        "Initiative Errors",
+                        JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 }
