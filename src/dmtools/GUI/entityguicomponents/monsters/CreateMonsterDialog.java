@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dmtools.GUI.monsters.hordes;
+package dmtools.GUI.entityguicomponents.monsters;
 
 import dmtools.filehandling.FileHandler;
-import dmtools.game.entities.Horde;
+import dmtools.game.entities.Monster;
 import java.awt.Frame;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -14,27 +14,28 @@ import java.io.IOException;
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 /**
  *
  * @author A3
  */
-public class CreateHordeDialog extends JDialog
+public class CreateMonsterDialog extends JDialog 
         implements PropertyChangeListener {
 
     private final JOptionPane optionPane;
-    private final CreateHordePanel hordePanel;
-    private Horde horde;
+    private final MonsterCreationPanel monPanel;
+    private Monster monster;
 
-    public CreateHordeDialog(Frame frame) {
+    public CreateMonsterDialog(Frame frame) {
         super(frame, true);
-        this.hordePanel = new CreateHordePanel();
+        this.monPanel = new MonsterCreationPanel();
 
-        setTitle("Create a new Horde");
+        setTitle("Create a new Monster");
         String createButtonTxt = "Create";
         Object[] options = {createButtonTxt};
 
-        optionPane = new JOptionPane(hordePanel,
+        optionPane = new JOptionPane(monPanel,
                 JOptionPane.PLAIN_MESSAGE,
                 JOptionPane.OK_OPTION,
                 null, //icon
@@ -66,31 +67,28 @@ public class CreateHordeDialog extends JDialog
             * This is where the error list is displayed
             * or the monster is created
              */
-            List<String> errors = hordePanel.hasValidInfo();
+            List<String> errors = monPanel.hasValidInfo();
             if (errors.isEmpty()) {
-                //create the horde here
+                //create the monster here
+                this.monster = monPanel.getCreatedMonster();
                 try {
-                    this.horde = hordePanel.getCreatedHorde();
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(this,
-                            ex.getLocalizedMessage(),
-                            "Error",
-                            JOptionPane.ERROR_MESSAGE,
-                            null);
+                    FileHandler.saveFromInstance(monster,
+                            FileHandler.MONSTER_FILE);
+                } catch (IOException ex) {
+                    System.out.println("ERROR"); // Don't know what to do 
                 }
                 dispose();
-                
             } else {
                 JOptionPane.showMessageDialog(this,
                         errors.toArray(),
-                        "Horde incomplete or incorrect",
+                        "Monster incomplete or incorrect",
                         JOptionPane.ERROR_MESSAGE,
                         null);
             }
         }
     }
 
-    public Horde getHorde() {
-        return this.horde;
+    public Monster getMonster() {
+        return this.monster;
     }
 }

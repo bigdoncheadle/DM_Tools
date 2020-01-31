@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dmtools.GUI.entityguicomponents.panels.horde;
+package dmtools.GUI.entityguicomponents.horde;
 
 import dmtools.game.entities.Horde;
 import java.awt.Frame;

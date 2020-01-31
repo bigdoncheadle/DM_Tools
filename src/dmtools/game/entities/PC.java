@@ -134,11 +134,4 @@ public class PC extends DNDEntity implements ReadWritable{
     public String getFilePath() {
         return "User/PCs/" + this.name + ".pc";
     }
-
-    @Override
-    public int compareTo(DNDEntity o) {
-        return this.name.compareTo(o.name);
-    }
-    
-
 }

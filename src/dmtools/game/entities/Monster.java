@@ -17,8 +17,8 @@ import dmtools.game.entities.numericals.enums.Stat;
 public class Monster extends DNDEntity implements ReadWritable{
     private int CR;
     private String monsterType;
-    
-    public Monster(String name, String monsterType, int AC, 
+
+    public Monster(String name, String monsterType, int AC,
             int HP, int CR) {
         // Statblock is a placeholder until monsters are actually developed
         super(name, new StatBlock(), AC, HP);
@@ -29,11 +29,11 @@ public class Monster extends DNDEntity implements ReadWritable{
     public int getCR() {
         return CR;
     }
-    
+
     public String getType() {
         return monsterType;
     }
-    
+
     @Override
     public int getProficiencyBonus() {
         return 0;
@@ -50,15 +50,10 @@ public class Monster extends DNDEntity implements ReadWritable{
     }
 
     @Override
-    public int compareTo(DNDEntity o) {
-        return this.name.compareTo(o.name);
-    }
-
-    @Override
     public String getFilePath() {
         return "User/Monsters/" + this.name + ".mon";
     }
-    
+
     public static String getFilePath(String name) {
         return "User/Monsters/" + name + ".mon";
     }
