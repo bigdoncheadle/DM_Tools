@@ -28,11 +28,13 @@ public class PlayerGetInitiativePanel extends JPanel {
     private PlayerParty party;
     private JLabel header;
     private HashMap<PC, JTextField> inputs;
+    private HashMap<PC, JLabel> labels;
     private int fillerY;
 
     public PlayerGetInitiativePanel(PlayerParty party) {
         this.party = party;
         this.inputs = new HashMap();
+        this.labels = new HashMap();
         createComponents();
     }
 
@@ -72,6 +74,7 @@ public class PlayerGetInitiativePanel extends JPanel {
             }
             PC pc = (PC) it.next();
             JLabel label = new JLabel(pc.getName());
+            labels.put(pc, label);
             this.add(label, c);
 
             // TextField
