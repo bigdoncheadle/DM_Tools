@@ -7,8 +7,9 @@ package dmtools.GUI;
 
 import dmtools.GUI.entityguicomponents.horde.CreateHordeDialog;
 import dmtools.GUI.initiativeguicomponents.getinitiative.dialogs.RemoveNonPlayerDialog;
+import dmtools.GUI.initiativeguicomponents.getinitiative.panels.GetInitiativePanel;
 import dmtools.GUI.initiativeguicomponents.getinitiative.panels.NonPlayerGetInitiativePanel;
-import dmtools.GUI.partymgmt.PartyMgmtPanel2;
+import dmtools.GUI.partymgmt.PartyMgmtPanel;
 import dmtools.filehandling.FileHandler;
 import dmtools.game.entities.DNDEntity;
 import dmtools.game.entities.Horde;
@@ -29,7 +30,7 @@ import javax.swing.WindowConstants;
  */
 public class TestingGUI implements Runnable, ActionListener {
 
-    private PartyMgmtPanel2 partyPanel;
+    private PartyMgmtPanel partyPanel;
     private NonPlayerGetInitiativePanel nonPlayerPanel;
     private JButton add, remove;
 
@@ -54,20 +55,11 @@ public class TestingGUI implements Runnable, ActionListener {
             party.add((PC) FileHandler.loadFromName("Cooper", FileHandler.PC_FILE));
             party.add((PC) FileHandler.loadFromName("Testing1", FileHandler.PC_FILE));
             party.add((PC) FileHandler.loadFromName("Testing2", FileHandler.PC_FILE));
-            partyPanel = new PartyMgmtPanel2(party);
         } catch (Exception e) {
         }
 
-//        container.addEntity(new PlayerGetInitiativePanel(party));
-        nonPlayerPanel = new NonPlayerGetInitiativePanel();
-        container.add(nonPlayerPanel);
-        add = new JButton("ADD");
-        add.addActionListener(this);
-        container.add(add);
-
-        remove = new JButton("REMOVE");
-        remove.addActionListener(this);
-        container.add(remove);
+        GetInitiativePanel iniPanel = new GetInitiativePanel(party);
+        container.add(iniPanel);
     }
 
     @Override
