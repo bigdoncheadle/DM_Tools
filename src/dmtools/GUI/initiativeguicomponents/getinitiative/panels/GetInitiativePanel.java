@@ -5,9 +5,12 @@
  */
 package dmtools.GUI.initiativeguicomponents.getinitiative.panels;
 
+import dmtools.GUI.entityguicomponents.horde.CreateHordeDialog;
 import dmtools.GUI.entityguicomponents.horde.MonsterComboBox;
 import dmtools.GUI.entityguicomponents.monsters.CreateMonsterDialog;
 import dmtools.filehandling.FileHandler;
+import dmtools.game.entities.DNDEntity;
+import dmtools.game.entities.Horde;
 import dmtools.game.entities.Monster;
 import dmtools.playermgmt.PlayerParty;
 import java.awt.Font;
@@ -17,6 +20,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -103,13 +107,13 @@ public class GetInitiativePanel extends JPanel implements ActionListener {
         // Initiatlize all buttons
         addHordeButton = new JButton("Horde");
         addHordeButton.addActionListener(this);
-        
+
         addMonButton = new JButton("+");
         addMonButton.addActionListener(this);
-        
+
         removeButton = new JButton("-");
         removeButton.addActionListener(this);
-        
+
         // Add Monster Button
         c = new GridBagConstraints();
         c.gridx = 5;
@@ -208,7 +212,12 @@ public class GetInitiativePanel extends JPanel implements ActionListener {
 
         // Add horde
         if (e.getSource().equals(addHordeButton)) {
-
+            CreateHordeDialog hordeDialog = new CreateHordeDialog(null);
+            Horde h = hordeDialog.getHorde();
+            if (h != null) {
+                nIniPanel.addEntity(h);
+            }
+            monBox.refresh();
         }
 
         // Remove Monster
