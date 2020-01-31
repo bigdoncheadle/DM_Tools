@@ -8,6 +8,7 @@ package dmtools.GUI.initiativeguicomponents.getinitiative.panels;
 import dmtools.GUI.entityguicomponents.horde.CreateHordeDialog;
 import dmtools.GUI.entityguicomponents.horde.MonsterComboBox;
 import dmtools.GUI.entityguicomponents.monsters.CreateMonsterDialog;
+import dmtools.GUI.initiativeguicomponents.getinitiative.dialogs.RemoveNonPlayerDialog;
 import dmtools.filehandling.FileHandler;
 import dmtools.game.entities.DNDEntity;
 import dmtools.game.entities.Horde;
@@ -222,7 +223,17 @@ public class GetInitiativePanel extends JPanel implements ActionListener {
 
         // Remove Monster
         if (e.getSource().equals(removeButton)) {
-
+            ArrayList<DNDEntity> currentEntities = nIniPanel.getEntities();
+            
+            if (!currentEntities.isEmpty()) {
+                RemoveNonPlayerDialog rnpDialog = new RemoveNonPlayerDialog(
+                        null, currentEntities);
+                if (rnpDialog.getEntitiesToRemove() != null) {
+                    for (DNDEntity i : rnpDialog.getEntitiesToRemove()) {
+                        nIniPanel.removeEntity(i);
+                    }
+                }
+            }
         }
 
         // Begin
