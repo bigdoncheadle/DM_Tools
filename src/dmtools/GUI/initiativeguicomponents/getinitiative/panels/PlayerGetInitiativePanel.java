@@ -39,7 +39,7 @@ public class PlayerGetInitiativePanel extends JPanel {
         createComponents();
     }
 
-    public void highlight(PC pc, boolean shouldColor) {
+    private void highlight(PC pc, boolean shouldColor) {
         if (shouldColor) {
             labels.get(pc).setForeground(Color.red);
         } else {
