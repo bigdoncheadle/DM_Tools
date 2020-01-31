@@ -6,6 +6,7 @@
 package dmtools.GUI.initiativeguicomponents.getinitiative.panels;
 
 import dmtools.GUI.LayoutConstants;
+import dmtools.game.entities.DNDEntity;
 import dmtools.game.entities.PC;
 import dmtools.playermgmt.Party;
 import dmtools.playermgmt.PlayerParty;
@@ -39,6 +40,26 @@ public class PlayerGetInitiativePanel extends JPanel {
         createComponents();
     }
 
+    public boolean hasValidInfo() {
+        boolean isValid = true;
+        for (PC i : inputs.keySet()) {
+            if (inputs.get(i).getText().equals("")) {
+                highlight(i, true);
+                isValid = false;
+            } else {
+                try {
+                    Integer.parseInt(inputs.get(i).getText());
+                    highlight(i, false);
+                } catch (NumberFormatException e) {
+                    highlight(i, true);
+                    isValid = false;
+                }
+            }
+        }
+
+        return isValid;
+    }
+
     private void highlight(PC pc, boolean shouldColor) {
         if (shouldColor) {
             labels.get(pc).setForeground(Color.red);
@@ -62,12 +83,12 @@ public class PlayerGetInitiativePanel extends JPanel {
         c.anchor = GridBagConstraints.CENTER;
         add(header, c);
         fillerY = c.gridy + 1;
-        
+
         // Each Player
         c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
-        
+
         Iterator it = party.getMembers().iterator();
         while (it.hasNext()) {
             c.gridy++;
@@ -99,7 +120,7 @@ public class PlayerGetInitiativePanel extends JPanel {
             this.add(tf, c);
             fillerY = c.gridy + 1;
         }
-        
+
         // Filler
         JPanel filler = new JPanel();
         filler.setBackground(getBackground());
