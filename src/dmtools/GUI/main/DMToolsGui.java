@@ -22,6 +22,8 @@ public class DMToolsGui implements Runnable{
     }
     
     private void addContent(Container container) {
+        MainPanel mainPanel = new MainPanel();
+        container.add(mainPanel);
     }
     
     @Override
