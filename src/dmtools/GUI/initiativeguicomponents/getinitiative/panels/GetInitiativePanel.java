@@ -6,14 +6,17 @@
 package dmtools.GUI.initiativeguicomponents.getinitiative.panels;
 
 import dmtools.GUI.entityguicomponents.horde.MonsterComboBox;
+import dmtools.GUI.entityguicomponents.monsters.CreateMonsterDialog;
+import dmtools.filehandling.FileHandler;
+import dmtools.game.entities.Monster;
 import dmtools.playermgmt.PlayerParty;
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,7 +26,7 @@ import javax.swing.SwingConstants;
  *
  * @author A3
  */
-public class GetInitiativePanel extends JPanel implements ActionListener{
+public class GetInitiativePanel extends JPanel implements ActionListener {
 
     private final PlayerParty party;
     private JLabel header;
@@ -70,7 +73,7 @@ public class GetInitiativePanel extends JPanel implements ActionListener{
         c.weightx = 0.15;
         c.insets = new Insets(5, 5, 0, 5);
         add(pIniPanel, c);
-        
+
         // Non Player Initiatives
         nIniPanel = new NonPlayerGetInitiativePanel();
 //        nIniPanel.setBackground(Color.pink);
@@ -97,10 +100,17 @@ public class GetInitiativePanel extends JPanel implements ActionListener{
         c.weightx = 0.15;
         add(monBox, c);
 
-        // Add Monster Button
+        // Initiatlize all buttons
         addHordeButton = new JButton("Horde");
+        addHordeButton.addActionListener(this);
+        
         addMonButton = new JButton("+");
+        addMonButton.addActionListener(this);
+        
         removeButton = new JButton("-");
+        removeButton.addActionListener(this);
+        
+        // Add Monster Button
         c = new GridBagConstraints();
         c.gridx = 5;
         c.gridy = 4;
@@ -116,7 +126,7 @@ public class GetInitiativePanel extends JPanel implements ActionListener{
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0.05;
         add(addHordeButton, c);
-        
+
         // Remove Button
         c = new GridBagConstraints();
         c.gridx = 7;
@@ -124,7 +134,6 @@ public class GetInitiativePanel extends JPanel implements ActionListener{
         c.insets = new Insets(0, 0, 0, 5);
         c.fill = GridBagConstraints.HORIZONTAL;
         add(removeButton, c);
-        
 
         // Begin Button
         beginButton = new JButton("Begin Encounter");
@@ -135,8 +144,7 @@ public class GetInitiativePanel extends JPanel implements ActionListener{
         c.fill = GridBagConstraints.HORIZONTAL;
         c.insets = new Insets(5, 5, 5, 5);
         add(beginButton, c);
-        
-        
+
         // Left Filler
         JPanel filler = new JPanel();
         c = new GridBagConstraints();
@@ -149,7 +157,7 @@ public class GetInitiativePanel extends JPanel implements ActionListener{
         c.fill = GridBagConstraints.BOTH;
         c.weightx = 0.2;
         add(filler, c);
-        
+
         // Middle Filler
         filler = new JPanel();
         filler.setBackground(getBackground());
@@ -161,7 +169,7 @@ public class GetInitiativePanel extends JPanel implements ActionListener{
         c.fill = GridBagConstraints.BOTH;
         c.weightx = 0.6;
         add(filler, c);
-        
+
         // Right Filler
         c = new GridBagConstraints();
         filler = new JPanel();
@@ -180,23 +188,36 @@ public class GetInitiativePanel extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         // Add Monster
         if (e.getSource().equals(addMonButton)) {
-            
+            if (monBox.getSelectedIndex() == 0) {
+                CreateMonsterDialog monDialog = new CreateMonsterDialog(null);
+                Monster m = monDialog.getMonster();
+                if (m != null) {
+                    nIniPanel.addEntity(m);
+                }
+            } else {
+                try {
+                Monster m = (Monster) FileHandler.loadFromName(
+                        (String)monBox.getSelectedItem(), 
+                        FileHandler.MONSTER_FILE);
+                nIniPanel.addEntity(m);
+                } catch (IOException ex) {
+                }
+            }
         }
-        
+
         // Add horde
         if (e.getSource().equals(addHordeButton)) {
-            
+
         }
-        
+
         // Remove Monster
         if (e.getSource().equals(removeButton)) {
-            
+
         }
-        
+
         // Begin
-        
         if (e.getSource().equals(beginButton)) {
-            
+
         }
     }
 }
