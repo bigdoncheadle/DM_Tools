@@ -73,8 +73,24 @@ public class NonPlayerGetInitiativePanel extends JPanel {
     }
     
     
-    public boolean isValid() {
+    public boolean hasValidInfo() {
+        boolean isValid = true;
+        for (DNDEntity i : inputs.keySet()) {
+            if (inputs.get(i).getText().equals("")) {
+                highlight(i, true);
+                isValid = false;
+            } else {
+                try {
+                    Integer.parseInt(inputs.get(i).getText());
+                    highlight(i, false);
+                } catch (NumberFormatException e) {
+                    highlight(i, true);
+                    isValid = false;
+                }
+            }
+        }
         
+        return isValid;
     }
     
     private void highlight(DNDEntity e, boolean shouldColor) {
