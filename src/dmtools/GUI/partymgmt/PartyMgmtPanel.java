@@ -26,7 +26,7 @@ import javax.swing.JTextField;
  *
  * @author A3
  */
-public class PartyMgmtPanel2 extends JPanel implements ActionListener {
+public class PartyMgmtPanel extends JPanel implements ActionListener {
 
     private PlayerParty party;
     private PartyDoubleList partyDoubleList;
@@ -34,7 +34,7 @@ public class PartyMgmtPanel2 extends JPanel implements ActionListener {
     private JTextField partyName;
     private JPanel editNamePanel;
 
-    public PartyMgmtPanel2(PlayerParty party) {
+    public PartyMgmtPanel(PlayerParty party) {
         this.party = party;
         setLayout(new GridBagLayout());
         fillContainer();
