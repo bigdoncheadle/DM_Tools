@@ -9,6 +9,7 @@ import dmtools.GUI.LayoutConstants;
 import dmtools.game.entities.PC;
 import dmtools.playermgmt.Party;
 import dmtools.playermgmt.PlayerParty;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -36,6 +37,14 @@ public class PlayerGetInitiativePanel extends JPanel {
         this.inputs = new HashMap();
         this.labels = new HashMap();
         createComponents();
+    }
+
+    public void highlight(PC pc, boolean shouldColor) {
+        if (shouldColor) {
+            labels.get(pc).setForeground(Color.red);
+        } else {
+            labels.get(pc).setForeground(null);
+        }
     }
 
     private void createComponents() {

@@ -71,6 +71,14 @@ public class NonPlayerGetInitiativePanel extends JPanel {
         revalidate();
         repaint();
     }
+    
+    public void highlight(DNDEntity e, boolean shouldColor) {
+        if (shouldColor) {
+            labels.get(e).setForeground(Color.red);
+        } else {
+            labels.get(e).setForeground(null);
+        }
+    }
 
     private void updateEntityList() {
         int fillerY = 1;
