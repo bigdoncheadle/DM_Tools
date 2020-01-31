@@ -5,11 +5,9 @@
  */
 package dmtools.GUI.main;
 
-import dmtools.GUI.partymgmt.PartyMgmtPanel;
 import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
-import resources.testing.TestingEntities;
 
 /**
  *
@@ -24,8 +22,6 @@ public class DMToolsGui implements Runnable{
     }
     
     private void addContent(Container container) {
-        PartyMgmtPanel partyPanel = new PartyMgmtPanel(TestingEntities.TESTING_PARTY);
-        container.add(partyPanel);
     }
     
     @Override
