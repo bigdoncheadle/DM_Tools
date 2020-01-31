@@ -194,12 +194,13 @@ public class GetInitiativePanel extends JPanel implements ActionListener {
                 if (m != null) {
                     nIniPanel.addEntity(m);
                 }
+                monBox.refresh();
             } else {
                 try {
-                Monster m = (Monster) FileHandler.loadFromName(
-                        (String)monBox.getSelectedItem(), 
-                        FileHandler.MONSTER_FILE);
-                nIniPanel.addEntity(m);
+                    Monster m = (Monster) FileHandler.loadFromName(
+                            (String) monBox.getSelectedItem(),
+                            FileHandler.MONSTER_FILE);
+                    nIniPanel.addEntity(m);
                 } catch (IOException ex) {
                 }
             }
