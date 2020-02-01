@@ -92,6 +92,11 @@ public class DisplayPanel extends JPanel{
         cardLayout.removeLayoutComponent(runEncounter);
     }
     
+    public PlayerParty getCurrentParty() {
+        party = partyMgmt.getParty();
+        return party;
+    }
+    
     private void createComponents() {
         cardLayout = new CardLayout();
         setLayout(cardLayout);
