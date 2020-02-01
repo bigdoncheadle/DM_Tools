@@ -6,9 +6,7 @@
 package dmtools.GUI.initiativeguicomponents.getinitiative.panels;
 
 import dmtools.GUI.LayoutConstants;
-import dmtools.game.entities.DNDEntity;
 import dmtools.game.entities.PC;
-import dmtools.playermgmt.Party;
 import dmtools.playermgmt.PlayerParty;
 import java.awt.Color;
 import java.awt.Font;
@@ -58,6 +56,28 @@ public class PlayerGetInitiativePanel extends JPanel {
         }
 
         return isValid;
+    }
+    
+    protected void updateParty(PlayerParty party) {
+        // Gets existing typed text
+        HashMap<PC, String> typedText = new HashMap();
+        for (PC i : inputs.keySet()) {
+            typedText.put(i, inputs.get(i).getText());
+        }
+        
+        // Updates the panel
+        this.party = party;
+        removeAll();
+        this.inputs = new HashMap();
+        this.labels = new HashMap();
+        createComponents();
+        
+        // Refills pre-typed initiatives
+        for (PC i : typedText.keySet()) {
+            if (inputs.containsKey(i)) {
+                inputs.get(i).setText(typedText.get(i));
+            }
+        }
     }
 
     private void highlight(PC pc, boolean shouldColor) {
