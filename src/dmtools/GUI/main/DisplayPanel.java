@@ -59,14 +59,12 @@ public class DisplayPanel extends JPanel{
         if (panelName.equals(ENCOUNTER)) {
             if (inCombat) {
                 cardLayout.show(this, RUN_ENCOUNTER);
-                System.out.println("Running Encounter");
             } else {
             if (!partyMgmt.getParty().equals(party)) {
                 this.party = partyMgmt.getParty();
                 createEncounter.updateParty(party);
             }
             cardLayout.show(this, CREATE_ENCOUNTER);
-                System.out.println("Creating Encounter");
             }
         }
         
