@@ -7,7 +7,7 @@ package dmtools.GUI.partymgmt;
 
 import dmtools.GUI.entityguicomponents.dialogs.CreatePcDialog;
 import dmtools.GUI.entityguicomponents.dialogs.EditPcDialog;
-import dmtools.GUI.main.DMToolsGui;
+import dmtools.GUI.DMToolsGui;
 import dmtools.game.entities.PC;
 import dmtools.playermgmt.PlayerParty;
 import java.awt.GridBagConstraints;
