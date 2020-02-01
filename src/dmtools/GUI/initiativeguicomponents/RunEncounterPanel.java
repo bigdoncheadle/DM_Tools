@@ -20,13 +20,13 @@ import javax.swing.JPanel;
  *
  * @author A3
  */
-public class EncounterPanel extends JPanel{
+public class RunEncounterPanel extends JPanel{
     private final InitiativeTracker iTrack;
     private final InitiativeButtonPanel buttonPanel;
     private final InitiativePlayerListPanel playerList;
     private final InitiativeEntityCardPanel cardPanel;
     
-    public EncounterPanel(InitiativeTracker iTrack) {
+    public RunEncounterPanel(InitiativeTracker iTrack) {
         this.iTrack = iTrack;
         this.playerList = new InitiativePlayerListPanel(iTrack);
         this.cardPanel = new InitiativeEntityCardPanel(iTrack);
