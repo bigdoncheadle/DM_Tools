@@ -7,6 +7,7 @@ package dmtools.GUI.initiativeguicomponents.getinitiative.panels;
 
 import dmtools.GUI.LayoutConstants;
 import dmtools.game.entities.DNDEntity;
+import dmtools.game.entities.PC;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -36,6 +37,21 @@ public class NonPlayerGetInitiativePanel extends JPanel {
         labels = new HashMap();
         entities = new ArrayList();
         createComponents();
+    }
+
+    public Map<DNDEntity, Integer> getInitiatives()
+            throws IllegalArgumentException {
+        Map<DNDEntity, Integer> initiatives = new HashMap();
+        for (DNDEntity i : inputs.keySet()) {
+            try {
+                int ini = Integer.parseInt(inputs.get(i).getText());
+                initiatives.put(i, ini);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("Invalid initiative found");
+            }
+        }
+
+        return initiatives;
     }
 
     public ArrayList<DNDEntity> getEntities() {
@@ -71,8 +87,7 @@ public class NonPlayerGetInitiativePanel extends JPanel {
         revalidate();
         repaint();
     }
-    
-    
+
     public boolean hasValidInfo() {
         boolean isValid = true;
         for (DNDEntity i : inputs.keySet()) {
@@ -89,10 +104,10 @@ public class NonPlayerGetInitiativePanel extends JPanel {
                 }
             }
         }
-        
+
         return isValid;
     }
-    
+
     private void highlight(DNDEntity e, boolean shouldColor) {
         if (shouldColor) {
             labels.get(e).setForeground(Color.red);
