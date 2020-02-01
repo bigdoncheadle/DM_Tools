@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dmtools.GUI.main.panels;
+package dmtools.GUI.main;
 
 import dmtools.GUI.LayoutConstants;
 import dmtools.GUI.main.DisplayPanel;
@@ -30,7 +30,7 @@ public class NavigationPanel extends JPanel implements ActionListener {
     private SettingsButton settings;
     
     private final DisplayPanel display;
-
+    
     public NavigationPanel(DisplayPanel display) {
         super();
         this.display = display;
