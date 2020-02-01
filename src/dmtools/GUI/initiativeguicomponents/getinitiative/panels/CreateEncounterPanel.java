@@ -49,9 +49,10 @@ public class CreateEncounterPanel extends JPanel implements ActionListener {
     private JButton beginButton, addMonButton, addHordeButton, removeButton;
     private MonsterComboBox monBox;
 
-    public CreateEncounterPanel(PlayerParty party) {
+    public CreateEncounterPanel(PlayerParty party, DisplayPanel display) {
         super();
         this.party = party;
+        this.display = display;
         createComponents();
     }
     
@@ -264,8 +265,6 @@ public class CreateEncounterPanel extends JPanel implements ActionListener {
                 /*
                 * BEGIN ENCOUNTER HERE
                 */
-                
-                
                 InitiativeTracker iniTrack = 
                         new InitiativeTracker(getInitiatives());
                 RunEncounterPanel runEncounter = 
