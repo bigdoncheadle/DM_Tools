@@ -7,7 +7,7 @@ package dmtools.GUI;
 
 import dmtools.GUI.entityguicomponents.horde.CreateHordeDialog;
 import dmtools.GUI.initiativeguicomponents.getinitiative.dialogs.RemoveNonPlayerDialog;
-import dmtools.GUI.initiativeguicomponents.getinitiative.panels.GetInitiativePanel;
+import dmtools.GUI.initiativeguicomponents.getinitiative.panels.CreateEncounterPanel;
 import dmtools.GUI.initiativeguicomponents.getinitiative.panels.NonPlayerGetInitiativePanel;
 import dmtools.GUI.partymgmt.PartyMgmtPanel;
 import dmtools.filehandling.FileHandler;
@@ -58,7 +58,7 @@ public class TestingGUI implements Runnable, ActionListener {
         } catch (Exception e) {
         }
 
-        GetInitiativePanel iniPanel = new GetInitiativePanel(party);
+        CreateEncounterPanel iniPanel = new CreateEncounterPanel(party);
         container.add(iniPanel);
     }
 
