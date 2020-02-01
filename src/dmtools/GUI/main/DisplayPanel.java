@@ -9,7 +9,6 @@ import dmtools.GUI.initiativeguicomponents.RunEncounterPanel;
 import dmtools.GUI.initiativeguicomponents.getinitiative.panels.CreateEncounterPanel;
 import dmtools.GUI.main.homepage.HomePanel;
 import dmtools.GUI.partymgmt.PartyMgmtPanel;
-import dmtools.game.initiative.InitiativeTracker;
 import dmtools.playermgmt.PlayerParty;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
