@@ -6,6 +6,7 @@
 package dmtools.GUI.initiativeguicomponents.getinitiative.panels;
 
 import dmtools.GUI.LayoutConstants;
+import dmtools.game.entities.DNDEntity;
 import dmtools.game.entities.PC;
 import dmtools.playermgmt.PlayerParty;
 import java.awt.Color;
@@ -15,6 +16,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -36,6 +38,21 @@ public class PlayerGetInitiativePanel extends JPanel {
         this.inputs = new HashMap();
         this.labels = new HashMap();
         createComponents();
+    }
+    
+    public Map<DNDEntity, Integer> getInitiatives() 
+            throws IllegalArgumentException{
+        Map<DNDEntity, Integer> initiatives = new HashMap();
+        for (PC i : inputs.keySet()) {
+            try {
+                int ini = Integer.parseInt(inputs.get(i).getText());
+                initiatives.put(i, ini);
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("Invalid initiative found");
+            }
+        }
+        
+        return initiatives;
     }
 
     public boolean hasValidInfo() {
