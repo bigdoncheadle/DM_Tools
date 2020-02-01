@@ -5,6 +5,7 @@
  */
 package dmtools.GUI.main;
 
+import dmtools.playermgmt.PlayerParty;
 import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
@@ -14,15 +15,17 @@ import javax.swing.WindowConstants;
  * @author A3
  */
 public class DMToolsGui implements Runnable{
-    private final String version;
+    public final String version;
+    private PlayerParty party;
     public static JFrame frame = new JFrame();
     
-    public DMToolsGui(String version) {
+    public DMToolsGui(String version, PlayerParty party) {
         this.version = version;
+        this.party = party;
     }
     
-    private void addContent(Container container) {
-        MainPanel mainPanel = new MainPanel();
+    private void createComponents(Container container) {
+        MainPanel mainPanel = new MainPanel(version, party);
         container.add(mainPanel);
     }
     
@@ -32,7 +35,7 @@ public class DMToolsGui implements Runnable{
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
         //add some stuff here
-        addContent(frame.getContentPane());
+        createComponents(frame.getContentPane());
         //stop adding stuff here
         
         frame.pack();
