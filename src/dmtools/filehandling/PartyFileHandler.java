@@ -83,4 +83,17 @@ public class PartyFileHandler {
             throw new IOException("Party type not supported/found");
         }
     }
+
+    static void makeNew(int partyType, File partyFile) {
+        FileWriter fWrite;
+        if (partyType == PLAYER_PARTY) {
+            try {
+                fWrite = new FileWriter(partyFile);
+                fWrite.write("partyName=New Party\n");
+                fWrite.write("members=null");
+                fWrite.close();
+            } catch (IOException e) {
+            }
+        }
+    }
 }
