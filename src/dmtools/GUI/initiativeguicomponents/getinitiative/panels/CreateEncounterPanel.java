@@ -22,6 +22,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -32,7 +34,7 @@ import javax.swing.SwingConstants;
  *
  * @author A3
  */
-public class GetInitiativePanel extends JPanel implements ActionListener {
+public class CreateEncounterPanel extends JPanel implements ActionListener {
 
     private final PlayerParty party;
     private JLabel header;
@@ -42,10 +44,14 @@ public class GetInitiativePanel extends JPanel implements ActionListener {
     private JButton beginButton, addMonButton, addHordeButton, removeButton;
     private MonsterComboBox monBox;
 
-    public GetInitiativePanel(PlayerParty party) {
+    public CreateEncounterPanel(PlayerParty party) {
         super();
         this.party = party;
         createComponents();
+    }
+    
+    public void updateParty(PlayerParty party) {
+        pIniPanel.updateParty(party);
     }
 
     private void createComponents() {
@@ -192,8 +198,11 @@ public class GetInitiativePanel extends JPanel implements ActionListener {
 
     }
     
-    public void updateParty(PlayerParty party) {
-        pIniPanel.updateParty(party);
+    private Map<DNDEntity, Integer> getInitiatives() {
+        Map<DNDEntity, Integer> initiatives = new HashMap();
+        initiatives.putAll(pIniPanel.getInitiatives());
+        initiatives.putAll(nIniPanel.getInitiatives());
+        return initiatives;
     }
 
     @Override
@@ -250,6 +259,7 @@ public class GetInitiativePanel extends JPanel implements ActionListener {
                 /*
                 * BEGIN ENCOUNTER HERE
                 */
+                
                 
                 
             } else {

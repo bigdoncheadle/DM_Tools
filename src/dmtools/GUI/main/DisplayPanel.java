@@ -5,8 +5,8 @@
  */
 package dmtools.GUI.main;
 
-import dmtools.GUI.initiativeguicomponents.EncounterPanel;
-import dmtools.GUI.initiativeguicomponents.getinitiative.panels.GetInitiativePanel;
+import dmtools.GUI.initiativeguicomponents.RunEncounterPanel;
+import dmtools.GUI.initiativeguicomponents.getinitiative.panels.CreateEncounterPanel;
 import dmtools.GUI.main.homepage.HomePanel;
 import dmtools.GUI.partymgmt.PartyMgmtPanel;
 import dmtools.playermgmt.PlayerParty;
@@ -22,8 +22,8 @@ public class DisplayPanel extends JPanel{
     
     private HomePanel home;
     private PartyMgmtPanel partyMgmt;
-    private GetInitiativePanel createEncounter;
-    private EncounterPanel encounter;
+    private CreateEncounterPanel createEncounter;
+    private RunEncounterPanel encounter;
     private FeatureComingSoon comingSoon;
     
     public final static String HOME = "Home Page";
@@ -73,7 +73,7 @@ public class DisplayPanel extends JPanel{
         add(partyMgmt, PARTYMGMT);
         
         // Create Encounter
-        createEncounter = new GetInitiativePanel(party);
+        createEncounter = new CreateEncounterPanel(party);
         add(createEncounter, CREATE_ENCOUNTER);
         
         // Feature Coming Soon
