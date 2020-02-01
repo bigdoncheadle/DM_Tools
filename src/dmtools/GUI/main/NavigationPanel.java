@@ -74,7 +74,7 @@ public class NavigationPanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // Encounter Button
         if (e.getSource() == encounter) {
-            display.show(DisplayPanel.CREATE_ENCOUNTER);
+            display.show(DisplayPanel.ENCOUNTER);
         }
         
         // Party Mgmt Button
