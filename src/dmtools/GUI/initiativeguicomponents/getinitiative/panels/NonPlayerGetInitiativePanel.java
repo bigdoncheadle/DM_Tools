@@ -148,8 +148,8 @@ public class NonPlayerGetInitiativePanel extends JPanel {
     private void addFiller(int index) {
         GridBagConstraints c = new GridBagConstraints();
         JPanel filler = new JPanel();
-//        filler.setBackground(getBackground());
-        filler.setBackground(Color.red);
+        filler.setBackground(getBackground());
+//        filler.setBackground(Color.red);
         c.gridx = 0;
         c.gridy = index;
         c.gridwidth = 2;
