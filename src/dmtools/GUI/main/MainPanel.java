@@ -22,8 +22,8 @@ public class MainPanel extends JPanel {
     private final NavigationPanel nav;
     private final DisplayPanel display;
 
-    public MainPanel(PlayerParty party) {
-        this.display = new DisplayPanel(party);
+    public MainPanel(String version, PlayerParty party) {
+        this.display = new DisplayPanel(version, party);
         this.nav = new NavigationPanel(display);
         createComponents();
 
