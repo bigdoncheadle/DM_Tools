@@ -7,6 +7,7 @@ package dmtools.GUI.main;
 
 import dmtools.playermgmt.PlayerParty;
 import java.awt.Container;
+import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
@@ -32,6 +33,7 @@ public class DMToolsGui implements Runnable{
     @Override
     public void run() {
         frame.setTitle("DM Tools " + version);
+        frame.setPreferredSize(new Dimension(900, 600));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
         //add some stuff here
