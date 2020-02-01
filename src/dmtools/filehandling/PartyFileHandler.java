@@ -33,16 +33,18 @@ public class PartyFileHandler {
         if (partyType == PLAYER_PARTY) {
             PlayerParty playerParty = new PlayerParty(
                     partyProperties.getProperty("partyName"));
-            StringBuilder memberString = new StringBuilder();
-            memberString.append(partyProperties.getProperty("members"));
-            String[] members = memberString.toString().split(" ");
-            for (String i : members) {
-                try {
-                    playerParty.add((PC) FileHandler.loadFromName(i,
-                            FileHandler.PC_FILE));
-                } catch (IOException e) {
-                    throw new IOException("Party member " + i + "'s file could "
-                            + "not be found");
+            if (!partyProperties.getProperty("members").equals("null")) {
+                StringBuilder memberString = new StringBuilder();
+                memberString.append(partyProperties.getProperty("members"));
+                String[] members = memberString.toString().split(" ");
+                for (String i : members) {
+                    try {
+                        playerParty.add((PC) FileHandler.loadFromName(i,
+                                FileHandler.PC_FILE));
+                    } catch (IOException e) {
+                        throw new IOException("Party member " + i + "'s file could "
+                                + "not be found");
+                    }
                 }
             }
             return playerParty;
