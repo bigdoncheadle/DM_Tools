@@ -36,6 +36,10 @@ public class MainPanel extends JPanel {
         
     }
     
+    public DisplayPanel getDisplay() {
+        return this.display;
+    }
+    
     private void createComponents() {
         setBackground(LayoutConstants.MAIN_PANEL_COLOR);
         setLayout(new GridBagLayout());
