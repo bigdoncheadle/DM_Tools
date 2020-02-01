@@ -6,7 +6,6 @@
 package dmtools.GUI.main;
 
 import dmtools.GUI.LayoutConstants;
-import dmtools.GUI.main.panels.NavigationPanel;
 import dmtools.playermgmt.PlayerParty;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
