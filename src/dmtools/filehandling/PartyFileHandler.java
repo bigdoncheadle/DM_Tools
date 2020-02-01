@@ -64,12 +64,16 @@ public class PartyFileHandler {
                 fWrite.write("partyName=");
                 fWrite.write(party.getName() + "\n");
                 fWrite.write("members=");
-                Iterator it = party.getMembers().iterator();
-                while (it.hasNext()) {
-                    PC i = (PC) it.next();
-                    fWrite.write(i.getName());
-                    if (it.hasNext()) {
-                        fWrite.write(" ");
+                if (party.getMembers().isEmpty()) {
+                    fWrite.write("null");
+                } else {
+                    Iterator it = party.getMembers().iterator();
+                    while (it.hasNext()) {
+                        PC i = (PC) it.next();
+                        fWrite.write(i.getName());
+                        if (it.hasNext()) {
+                            fWrite.write(" ");
+                        }
                     }
                 }
                 fWrite.close();
