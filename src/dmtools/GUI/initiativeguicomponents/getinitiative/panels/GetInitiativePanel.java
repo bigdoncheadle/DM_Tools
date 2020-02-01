@@ -191,6 +191,10 @@ public class GetInitiativePanel extends JPanel implements ActionListener {
         add(filler, c);
 
     }
+    
+    public void updateParty(PlayerParty party) {
+        pIniPanel.updateParty(party);
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
