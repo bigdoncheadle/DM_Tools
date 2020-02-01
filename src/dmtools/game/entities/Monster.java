@@ -51,10 +51,10 @@ public class Monster extends DNDEntity implements ReadWritable{
 
     @Override
     public String getFilePath() {
-        return "User/Monsters/" + this.name + ".mon";
+        return "Campaigns/default/Monsters/" + this.name + ".mon";
     }
 
     public static String getFilePath(String name) {
-        return "User/Monsters/" + name + ".mon";
+        return "Campaigns/default/Monsters/" + name + ".mon";
     }
 }

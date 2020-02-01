@@ -9,7 +9,6 @@ import dmtools.GUI.initiativeguicomponents.RunEncounterPanel;
 import dmtools.GUI.initiativeguicomponents.getinitiative.panels.CreateEncounterPanel;
 import dmtools.GUI.main.homepage.HomePanel;
 import dmtools.GUI.partymgmt.PartyMgmtPanel;
-import dmtools.game.initiative.InitiativeTracker;
 import dmtools.playermgmt.PlayerParty;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -59,14 +58,12 @@ public class DisplayPanel extends JPanel{
         if (panelName.equals(ENCOUNTER)) {
             if (inCombat) {
                 cardLayout.show(this, RUN_ENCOUNTER);
-                System.out.println("Running Encounter");
             } else {
             if (!partyMgmt.getParty().equals(party)) {
                 this.party = partyMgmt.getParty();
                 createEncounter.updateParty(party);
             }
             cardLayout.show(this, CREATE_ENCOUNTER);
-                System.out.println("Creating Encounter");
             }
         }
         

@@ -72,7 +72,7 @@ public class FileHandler {
                 break;
 
             case PLAYER_PARTY_FILE:
-                file = new File(PlayerParty.getFilePath(name));
+                file = new File(PlayerParty.getFilePath(""));
                 break;
             case MONSTER_FILE:
                 file = new File(Monster.getFilePath(name));

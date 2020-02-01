@@ -27,13 +27,14 @@ public class PlayerParty extends Party implements ReadWritable {
         super(name);
     }
     
-    public static String getFilePath(String name) {
-        return "User/Parties/" + name + ".pty";
-    }
     
     @Override
     public String getFilePath() {
-        return "User/Parties/" + super.getName() + ".pty";
+        return "Campaigns/default/party.pty";
+    }
+    
+    public static String getFilePath(String name) {
+        return "Campaigns/default/party.pty";
     }
 
     @Override
