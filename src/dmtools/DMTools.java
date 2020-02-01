@@ -8,7 +8,7 @@ package dmtools;
 import dmtools.GUI.main.DMToolsGui;
 import dmtools.filehandling.FileHandler;
 import dmtools.playermgmt.PlayerParty;
-import java.io.File;
+import dmtools.filehandling.Initialize;
 import java.io.IOException;
 import javax.swing.SwingUtilities;
 
@@ -25,13 +25,14 @@ public class DMTools {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Initialize.setup();
+        
         try {
-            PlayerParty party = (PlayerParty) FileHandler.loadFromName(
-                    "party", FileHandler.PLAYER_PARTY_FILE);
+            PlayerParty party = Initialize.getParty();
             DMToolsGui dmGui = new DMToolsGui(VERSION, party);
             SwingUtilities.invokeLater(dmGui);
-        } catch (IOException e) {
-            System.out.println("oops");
+        } catch (Exception e) {
+            System.out.println(e.getLocalizedMessage());
         }
 
     }
