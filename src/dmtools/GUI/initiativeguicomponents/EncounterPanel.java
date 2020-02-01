@@ -32,6 +32,11 @@ public class EncounterPanel extends JPanel{
         this.cardPanel = new InitiativeEntityCardPanel(iTrack);
         this.buttonPanel = new InitiativeButtonPanel(iTrack, playerList, 
                 cardPanel);
+        
+        createComponents();
+    }
+    
+    private void createComponents() {
         setLayout(new GridBagLayout());
         setBackground(LayoutConstants.MAIN_PANEL_COLOR);
         
@@ -68,5 +73,4 @@ public class EncounterPanel extends JPanel{
         add(cardPanel, cardC);
         add(buttonPanel, buttonC);
     }
-    
 }
