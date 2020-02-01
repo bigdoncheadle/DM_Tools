@@ -8,11 +8,14 @@ package dmtools.GUI.initiativeguicomponents.getinitiative.panels;
 import dmtools.GUI.entityguicomponents.horde.CreateHordeDialog;
 import dmtools.GUI.entityguicomponents.horde.MonsterComboBox;
 import dmtools.GUI.entityguicomponents.monsters.CreateMonsterDialog;
+import dmtools.GUI.initiativeguicomponents.RunEncounterPanel;
 import dmtools.GUI.initiativeguicomponents.getinitiative.dialogs.RemoveNonPlayerDialog;
+import dmtools.GUI.main.DisplayPanel;
 import dmtools.filehandling.FileHandler;
 import dmtools.game.entities.DNDEntity;
 import dmtools.game.entities.Horde;
 import dmtools.game.entities.Monster;
+import dmtools.game.initiative.InitiativeTracker;
 import dmtools.playermgmt.PlayerParty;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -37,6 +40,8 @@ import javax.swing.SwingConstants;
 public class CreateEncounterPanel extends JPanel implements ActionListener {
 
     private final PlayerParty party;
+    private final DisplayPanel display;
+    
     private JLabel header;
     private PlayerGetInitiativePanel pIniPanel;
     private NonPlayerGetInitiativePanel nIniPanel;
@@ -261,6 +266,11 @@ public class CreateEncounterPanel extends JPanel implements ActionListener {
                 */
                 
                 
+                InitiativeTracker iniTrack = 
+                        new InitiativeTracker(getInitiatives());
+                RunEncounterPanel runEncounter = 
+                        new RunEncounterPanel(iniTrack, display);
+                display.beginEncounter(runEncounter);
                 
             } else {
                 JOptionPane.showMessageDialog(null,
