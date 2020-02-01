@@ -5,7 +5,6 @@
  */
 package dmtools.filehandling;
 
-import dmtools.game.entities.DNDEntity;
 import dmtools.game.entities.PC;
 import dmtools.playermgmt.Party;
 import dmtools.playermgmt.PlayerParty;

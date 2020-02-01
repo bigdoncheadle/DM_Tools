@@ -21,7 +21,7 @@ public class BatchFileHandler {
 
     public ArrayList<PC> loadAllPcs() throws Exception {
         ArrayList<PC> pcs = new ArrayList();
-        File pcDir = new File("User/PCs");
+        File pcDir = new File("Campaigns/default/PCs");
         for (File i : pcDir.listFiles(new DndFileFilter(DndFileFilter.PC))) {
             pcs.add((PC) FileHandler.loadFromFile(i));
         }
@@ -30,7 +30,7 @@ public class BatchFileHandler {
 
     public ArrayList<Monster> loadAllMonsters() throws Exception {
         ArrayList<Monster> monsters = new ArrayList();
-        File monDir = new File("User/Monsters");
+        File monDir = new File("Campaigns/default/Monsters");
         for (File i : monDir.listFiles(
                 new DndFileFilter(DndFileFilter.MONSTER))) {
             monsters.add((Monster) FileHandler.loadFromFile(i));
@@ -41,7 +41,7 @@ public class BatchFileHandler {
     public ArrayList<String> loadAllFileNames(Class target) {
         ArrayList<String> allFileNames = new ArrayList();
         if (target == Monster.class) {
-            File monDir = new File("User/Monsters");
+            File monDir = new File("Campaigns/default/Monsters");
             for (File i : monDir.listFiles(
                     new DndFileFilter(DndFileFilter.MONSTER))) {
                 allFileNames.add(cleanFileName(i.getName()));

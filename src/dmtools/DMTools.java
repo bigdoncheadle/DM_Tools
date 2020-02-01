@@ -27,7 +27,7 @@ public class DMTools {
         // TODO code application logic here
         try {
             PlayerParty party = (PlayerParty) FileHandler.loadFromName(
-                    "Test Party", FileHandler.PLAYER_PARTY_FILE);
+                    "party", FileHandler.PLAYER_PARTY_FILE);
             DMToolsGui dmGui = new DMToolsGui(VERSION, party);
             SwingUtilities.invokeLater(dmGui);
         } catch (IOException e) {
