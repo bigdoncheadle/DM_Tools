@@ -8,11 +8,14 @@ package dmtools.GUI.initiativeguicomponents.getinitiative.panels;
 import dmtools.GUI.entityguicomponents.horde.CreateHordeDialog;
 import dmtools.GUI.entityguicomponents.horde.MonsterComboBox;
 import dmtools.GUI.entityguicomponents.monsters.CreateMonsterDialog;
+import dmtools.GUI.initiativeguicomponents.RunEncounterPanel;
 import dmtools.GUI.initiativeguicomponents.getinitiative.dialogs.RemoveNonPlayerDialog;
+import dmtools.GUI.main.DisplayPanel;
 import dmtools.filehandling.FileHandler;
 import dmtools.game.entities.DNDEntity;
 import dmtools.game.entities.Horde;
 import dmtools.game.entities.Monster;
+import dmtools.game.initiative.InitiativeTracker;
 import dmtools.playermgmt.PlayerParty;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -22,6 +25,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -32,9 +37,11 @@ import javax.swing.SwingConstants;
  *
  * @author A3
  */
-public class GetInitiativePanel extends JPanel implements ActionListener {
+public class CreateEncounterPanel extends JPanel implements ActionListener {
 
     private final PlayerParty party;
+    private final DisplayPanel display;
+    
     private JLabel header;
     private PlayerGetInitiativePanel pIniPanel;
     private NonPlayerGetInitiativePanel nIniPanel;
@@ -42,10 +49,15 @@ public class GetInitiativePanel extends JPanel implements ActionListener {
     private JButton beginButton, addMonButton, addHordeButton, removeButton;
     private MonsterComboBox monBox;
 
-    public GetInitiativePanel(PlayerParty party) {
+    public CreateEncounterPanel(PlayerParty party, DisplayPanel display) {
         super();
         this.party = party;
+        this.display = display;
         createComponents();
+    }
+    
+    public void updateParty(PlayerParty party) {
+        pIniPanel.updateParty(party);
     }
 
     private void createComponents() {
@@ -191,6 +203,13 @@ public class GetInitiativePanel extends JPanel implements ActionListener {
         add(filler, c);
 
     }
+    
+    private Map<DNDEntity, Integer> getInitiatives() {
+        Map<DNDEntity, Integer> initiatives = new HashMap();
+        initiatives.putAll(pIniPanel.getInitiatives());
+        initiatives.putAll(nIniPanel.getInitiatives());
+        return initiatives;
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -246,7 +265,11 @@ public class GetInitiativePanel extends JPanel implements ActionListener {
                 /*
                 * BEGIN ENCOUNTER HERE
                 */
-                
+                InitiativeTracker iniTrack = 
+                        new InitiativeTracker(getInitiatives());
+                RunEncounterPanel runEncounter = 
+                        new RunEncounterPanel(iniTrack, display);
+                display.beginEncounter(runEncounter);
                 
             } else {
                 JOptionPane.showMessageDialog(null,

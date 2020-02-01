@@ -9,6 +9,7 @@ import dmtools.GUI.LayoutConstants;
 import dmtools.GUI.initiativeguicomponents.panels.InitiativeButtonPanel;
 import dmtools.GUI.initiativeguicomponents.panels.InitiativeEntityCardPanel;
 import dmtools.GUI.initiativeguicomponents.panels.InitiativePlayerListPanel;
+import dmtools.GUI.main.DisplayPanel;
 import dmtools.game.initiative.InitiativeTracker;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -20,18 +21,26 @@ import javax.swing.JPanel;
  *
  * @author A3
  */
-public class EncounterPanel extends JPanel{
+public class RunEncounterPanel extends JPanel{
     private final InitiativeTracker iTrack;
     private final InitiativeButtonPanel buttonPanel;
     private final InitiativePlayerListPanel playerList;
     private final InitiativeEntityCardPanel cardPanel;
     
-    public EncounterPanel(InitiativeTracker iTrack) {
+    private final DisplayPanel display;
+    
+    public RunEncounterPanel(InitiativeTracker iTrack, DisplayPanel display) {
         this.iTrack = iTrack;
+        this.display = display;
         this.playerList = new InitiativePlayerListPanel(iTrack);
         this.cardPanel = new InitiativeEntityCardPanel(iTrack);
-        this.buttonPanel = new InitiativeButtonPanel(iTrack, playerList, 
-                cardPanel);
+        this.buttonPanel = new InitiativeButtonPanel(
+                iTrack, display, playerList, cardPanel);
+        
+        createComponents();
+    }
+    
+    private void createComponents() {
         setLayout(new GridBagLayout());
         setBackground(LayoutConstants.MAIN_PANEL_COLOR);
         
@@ -68,5 +77,4 @@ public class EncounterPanel extends JPanel{
         add(cardPanel, cardC);
         add(buttonPanel, buttonC);
     }
-    
 }

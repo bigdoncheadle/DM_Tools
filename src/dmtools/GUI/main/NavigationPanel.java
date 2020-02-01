@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dmtools.GUI.main.panels;
+package dmtools.GUI.main;
 
 import dmtools.GUI.LayoutConstants;
+import dmtools.GUI.main.DisplayPanel;
 import dmtools.GUI.main.buttons.NewEncounterButton;
 import dmtools.GUI.main.buttons.PartyManagementButton;
-import dmtools.GUI.main.buttons.PlayerButton;
 import dmtools.GUI.main.buttons.DMToolsButton;
 import dmtools.GUI.main.buttons.SettingsButton;
 import java.awt.GridBagConstraints;
@@ -24,14 +24,20 @@ import javax.swing.JPanel;
  */
 public class NavigationPanel extends JPanel implements ActionListener {
 
-    private final NewEncounterButton encounter;
-    private final PartyManagementButton party;
-    private final PlayerButton player;
-    private final DMToolsButton dm;
-    private final SettingsButton settings;
-
-    public NavigationPanel() {
+    private NewEncounterButton encounter;
+    private PartyManagementButton party;
+    private DMToolsButton dm;
+    private SettingsButton settings;
+    
+    private final DisplayPanel display;
+    
+    public NavigationPanel(DisplayPanel display) {
         super();
+        this.display = display;
+        createComponents();
+    }
+    
+    private void createComponents () {
         setBackground(LayoutConstants.NAV_PANEL_COLOR);
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -41,32 +47,49 @@ public class NavigationPanel extends JPanel implements ActionListener {
 
         //New Encounter Button
         encounter = new NewEncounterButton();
+        encounter.addActionListener(this);
         c.gridy = 0;
         add(encounter, c);
 
         //Party Mgmt Button
         party = new PartyManagementButton();
+        party.addActionListener(this);
         c.gridy = 1;
         add(party, c);
         
-        //Player Button
-        player = new PlayerButton();
-        c.gridy = 2;
-        add(player, c);
-        
         //DM Tools Button
         dm = new DMToolsButton();
-        c.gridy = 3;
+        dm.addActionListener(this);
+        c.gridy = 2;
         add(dm, c);
         
         //Settings Button
         settings = new SettingsButton();
-        c.gridy = 4;
+        settings.addActionListener(this);
+        c.gridy = 3;
         add(settings, c);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        // Encounter Button
+        if (e.getSource() == encounter) {
+            display.show(DisplayPanel.ENCOUNTER);
+        }
+        
+        // Party Mgmt Button
+        if (e.getSource() == party) {
+            display.show(DisplayPanel.PARTYMGMT);
+        }
+        
+        // DM Tools
+        if (e.getSource() == dm) {
+            display.show(DisplayPanel.COMING_SOON);
+        }
+        
+        // Settings
+        if (e.getSource() == settings) {
+            display.show(DisplayPanel.COMING_SOON);
+        }
     }
-
 }

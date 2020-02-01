@@ -10,6 +10,8 @@ import dmtools.GUI.initiativeguicomponents.Cyclable;
 import dmtools.GUI.initiativeguicomponents.buttons.ExitEncounterButton;
 import dmtools.GUI.initiativeguicomponents.buttons.NextPlayerButton;
 import dmtools.GUI.initiativeguicomponents.buttons.PrevPlayerButton;
+import static dmtools.GUI.main.DMToolsGui.frame;
+import dmtools.GUI.main.DisplayPanel;
 import dmtools.game.initiative.InitiativeTracker;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -19,6 +21,7 @@ import java.util.Arrays;
 import java.util.List;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -33,8 +36,12 @@ public class InitiativeButtonPanel extends JPanel implements ActionListener {
     private final PrevPlayerButton prevB;
     private final ExitEncounterButton exitB;
 
-    public InitiativeButtonPanel(InitiativeTracker iTrack, Cyclable... c) {
+    private final DisplayPanel display;
+
+    public InitiativeButtonPanel(
+            InitiativeTracker iTrack, DisplayPanel display, Cyclable... c) {
         this.iTrack = iTrack;
+        this.display = display;
         toCycle = new ArrayList();
         toCycle.addAll(Arrays.asList(c));
         nextB = new NextPlayerButton();
@@ -79,9 +86,19 @@ public class InitiativeButtonPanel extends JPanel implements ActionListener {
 
         //Exit
         if (e.getSource() == exitB) {
-            /*
-            * Needs implementation
-             */
+            // Dialog for confirmation
+            Object[] options = {"End Encounter", "Cancel"};
+            int n = JOptionPane.showOptionDialog(null,
+                    "Would you like to end this Encounter?",
+                    "Confirm Encounter End",
+                    JOptionPane.OK_CANCEL_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[1]);
+            if (n == JOptionPane.OK_OPTION) {
+                display.endEncounter();
+            }
         }
 
         //Next
