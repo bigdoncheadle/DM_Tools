@@ -48,7 +48,7 @@ public class HomePanel extends JPanel {
         // Header
         JLabel header = new JLabel(headerText, SwingConstants.CENTER);
         header.setFont(header.getFont().deriveFont(40f));
-        header.setForeground(LayoutConstants.YELLOW);
+        header.setForeground(LayoutConstants.GREEN);
         header.setAlignmentX(Component.CENTER_ALIGNMENT);
         c = new GridBagConstraints();
         c.gridx = 0;
