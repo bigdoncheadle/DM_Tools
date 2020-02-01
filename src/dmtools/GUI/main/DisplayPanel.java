@@ -48,6 +48,10 @@ public class DisplayPanel extends JPanel{
         }
         
         if (panelName.equals(CREATE_ENCOUNTER)) {
+            if (!partyMgmt.getParty().equals(party)) {
+                this.party = partyMgmt.getParty();
+                createEncounter.updateParty(party);
+            }
             cardLayout.show(this, CREATE_ENCOUNTER);
         }
         
