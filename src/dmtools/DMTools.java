@@ -5,7 +5,7 @@
  */
 package dmtools;
 
-import dmtools.GUI.main.DMToolsGui;
+import dmtools.GUI.DMToolsGui;
 import dmtools.filehandling.FileHandler;
 import dmtools.playermgmt.PlayerParty;
 import dmtools.filehandling.Initialize;

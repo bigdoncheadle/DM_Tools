@@ -10,7 +10,7 @@ import dmtools.GUI.initiativeguicomponents.Cyclable;
 import dmtools.GUI.initiativeguicomponents.buttons.ExitEncounterButton;
 import dmtools.GUI.initiativeguicomponents.buttons.NextPlayerButton;
 import dmtools.GUI.initiativeguicomponents.buttons.PrevPlayerButton;
-import static dmtools.GUI.main.DMToolsGui.frame;
+import static dmtools.GUI.DMToolsGui.frame;
 import dmtools.GUI.main.DisplayPanel;
 import dmtools.game.initiative.InitiativeTracker;
 import java.awt.Dimension;
