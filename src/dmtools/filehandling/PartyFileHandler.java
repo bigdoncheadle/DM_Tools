@@ -36,7 +36,7 @@ public class PartyFileHandler {
             if (!partyProperties.getProperty("members").equals("null")) {
                 StringBuilder memberString = new StringBuilder();
                 memberString.append(partyProperties.getProperty("members"));
-                String[] members = memberString.toString().split(" ");
+                String[] members = memberString.toString().split("$");
                 for (String i : members) {
                     try {
                         playerParty.add((PC) FileHandler.loadFromName(i,
@@ -72,7 +72,7 @@ public class PartyFileHandler {
                         PC i = (PC) it.next();
                         fWrite.write(i.getName());
                         if (it.hasNext()) {
-                            fWrite.write(" ");
+                            fWrite.write("$");
                         }
                     }
                 }
