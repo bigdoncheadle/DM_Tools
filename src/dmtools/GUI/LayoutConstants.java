@@ -38,9 +38,14 @@ public class LayoutConstants {
     public static final int ENCOUNTER_BUTTON_SIZE = 40;
     
     //Button Colors
+    public static final String ARROW_COLOR = "YELLOW";
+    public static final String ARROW_CLICK_COLOR = "GREEN";
+    public static final String EXIT_COLOR = "RED";
+    public static final String EXIT_CLICK_COLOR = "GREEN";
+    
+    public static final String NAVIGATOR_ICON_COLOR = "RED";
+    public static final String NAVIGATOR_ICON_CLICK = "YELLOW";
     public static final Color NAVIGATOR_BUTTON_COLOR = BEIGE;
-    public static final String NAVIGATOR_ICON_COLOR = "red";
-    public static final String NAVIGATOR_ICON_SELECT = "YELLOW";
 
     /*
     * PLAYABLE CHARACTER PANEL
