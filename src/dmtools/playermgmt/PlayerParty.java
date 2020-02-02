@@ -33,7 +33,7 @@ public class PlayerParty extends Party implements ReadWritable {
         return "Campaigns/default/party.pty";
     }
     
-    public static String getFilePath(String name) {
+    public static String getPartyPath() {
         return "Campaigns/default/party.pty";
     }
 
