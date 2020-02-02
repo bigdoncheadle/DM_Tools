@@ -28,7 +28,7 @@ public class WindowCloseAdapter extends WindowAdapter {
     @Override
     public void windowClosing(WindowEvent w) {
         Object[] options = {"Save and Quit",
-            "Cancel"};
+            "Quit", "Cancel"};
         int n = JOptionPane.showOptionDialog(null,
                 "Are you sure you want to exit and save changes?",
                 "Confirm Close",
@@ -36,9 +36,9 @@ public class WindowCloseAdapter extends WindowAdapter {
                 JOptionPane.QUESTION_MESSAGE,
                 null,
                 options,
-                options[1]);
+                options[2]);
         
-        // Closes only if the user selects yes
+        // Save and quit
         if (n == JOptionPane.YES_OPTION) {
             try {
                 FileHandler.saveFromInstance(displayPanel.getCurrentParty(),
@@ -48,6 +48,11 @@ public class WindowCloseAdapter extends WindowAdapter {
                 System.out.println("Problem saving the party on close");
                 System.exit(0);
             }
+        }
+        
+        // Quit
+        if (n == JOptionPane.NO_OPTION) {
+            System.exit(0);
         }
     }
 }
