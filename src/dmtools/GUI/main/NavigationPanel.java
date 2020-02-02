@@ -7,10 +7,10 @@ package dmtools.GUI.main;
 
 import dmtools.GUI.LayoutConstants;
 import dmtools.GUI.main.DisplayPanel;
-import dmtools.GUI.main.buttons.NewEncounterButton;
-import dmtools.GUI.main.buttons.PartyManagementButton;
-import dmtools.GUI.main.buttons.DMToolsButton;
-import dmtools.GUI.main.buttons.SettingsButton;
+import dmtools.GUI.buttons.custombuttons.EncounterButton;
+import dmtools.GUI.buttons.custombuttons.PartyManagementButton;
+import dmtools.GUI.buttons.custombuttons.DMToolsButton;
+import dmtools.GUI.buttons.custombuttons.SettingsButton;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -24,7 +24,7 @@ import javax.swing.JPanel;
  */
 public class NavigationPanel extends JPanel implements ActionListener {
 
-    private NewEncounterButton encounter;
+    private EncounterButton encounter;
     private PartyManagementButton party;
     private DMToolsButton dm;
     private SettingsButton settings;
@@ -46,7 +46,7 @@ public class NavigationPanel extends JPanel implements ActionListener {
         c.weighty = 1.0;
 
         //New Encounter Button
-        encounter = new NewEncounterButton();
+        encounter = new EncounterButton();
         encounter.addActionListener(this);
         c.gridy = 0;
         add(encounter, c);
