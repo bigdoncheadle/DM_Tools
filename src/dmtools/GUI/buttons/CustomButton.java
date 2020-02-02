@@ -5,11 +5,14 @@
  */
 package dmtools.GUI.buttons;
 
+import dmtools.GUI.LayoutConstants;
 import java.awt.Image;
 import java.awt.Insets;
 import java.net.URL;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -34,10 +37,14 @@ public abstract class CustomButton extends JButton {
     
     private void formatButton() {
         setBorderPainted(false);
+        setOpaque(false);
         setBorder(null);
         setMargin(new Insets(0, 0, 0, 0));
         setContentAreaFilled(false);
         setToolTipText(hoverText);
+        setForeground(LayoutConstants.getColor("yellow"));
+        setVerticalTextPosition(SwingConstants.BOTTOM);
+        setHorizontalTextPosition(SwingConstants.CENTER);
     }
     
     private void customizeIcons() {
@@ -78,8 +85,7 @@ public abstract class CustomButton extends JButton {
     }
             
     private ImageIcon getCustomIcon (String iconName) {
-        System.out.println(getURL(iconName));
-        ImageIcon original = new ImageIcon(getURL(iconName));
+         ImageIcon original = new ImageIcon(getURL(iconName));
         Image scaledImg = original.getImage();
         scaledImg = scaledImg.getScaledInstance(buttonSize, buttonSize, 
                 Image.SCALE_SMOOTH);
