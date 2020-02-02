@@ -56,10 +56,24 @@ public class LayoutConstants {
     * INITIATIVE PANEL
     */
     
-    
-    
-    
-    
+    public static Color getColor(String color) {
+        if (color.equalsIgnoreCase("red")) {
+            return RED;
+        }
+        if (color.equalsIgnoreCase("yellow")) {
+            return YELLOW;
+        }
+        if (color.equalsIgnoreCase("black")) {
+            return CHARCOAL;
+        }
+        if (color.equalsIgnoreCase("green")) {
+            return GREEN;
+        }
+        if (color.equalsIgnoreCase("beige")) {
+            return BEIGE;
+        }
+        else return null;
+    }
 }
 
 
