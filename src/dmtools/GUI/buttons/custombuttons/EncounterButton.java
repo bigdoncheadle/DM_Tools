@@ -12,13 +12,13 @@ import dmtools.GUI.buttons.CustomButton;
  *
  * @author A3
  */
-public class PrevPlayerButton extends CustomButton {
+public class EncounterButton extends CustomButton {
 
-    public PrevPlayerButton() {
-        super("LEFTARROW",
-                LayoutConstants.ARROW_COLOR,
-                LayoutConstants.ARROW_CLICK_COLOR,
-                LayoutConstants.ENCOUNTER_BUTTON_SIZE,
-                "Previous Player");
+    public EncounterButton() {
+        super("ENCOUNTER",
+                LayoutConstants.NAVIGATOR_ICON_COLOR,
+                LayoutConstants.NAVIGATOR_ICON_CLICK,
+                LayoutConstants.NAVIGATOR_BUTTON_SIZE,
+                "Create or Run an Encounter");
     }
 }
