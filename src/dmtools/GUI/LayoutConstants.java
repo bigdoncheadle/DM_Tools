@@ -24,6 +24,7 @@ public class LayoutConstants {
     public static Color BEIGE = Color.decode("#928A74");
     public static Color RED = Color.decode("#380909");
     public static Color DARK_GREEN = Color.decode("#1c2421");
+    public static Color LIGHT_GREEN = Color.decode("#00530D");
     
     //Panel Colors
     public static Color MAIN_PANEL_COLOR = DARKOAL;
