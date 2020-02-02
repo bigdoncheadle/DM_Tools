@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dmtools.GUI.main.buttons;
+package dmtools.GUI.buttons.custombuttons;
 
 import dmtools.GUI.LayoutConstants;
 import java.awt.Image;
@@ -16,16 +16,16 @@ import javax.swing.JButton;
  *
  * @author A3
  */
-public class PartyManagementButton extends JButton{
+public class NewEncounterButton extends JButton{
     private static final int BUTTON_SIZE = 
             LayoutConstants.NAVIGATOR_BUTTON_SIZE; 
     
-    public PartyManagementButton() {
+    public NewEncounterButton() {
         super();
         try {
             //Main icon for button
             URL defaultURL = getClass().getResource(
-                    "icons/party_" + LayoutConstants.NAVIGATOR_ICON_COLOR + 
+                    "icons/encounter_" + LayoutConstants.NAVIGATOR_ICON_COLOR + 
                             ".png");
             ImageIcon originalIcon = new ImageIcon(defaultURL);
             Image scaledImg = originalIcon.getImage();
@@ -35,7 +35,7 @@ public class PartyManagementButton extends JButton{
 
             //Hover icon for button
             URL hoverURL = getClass().getResource(
-                    "icons/party_" + LayoutConstants.NAVIGATOR_ICON_COLOR + 
+                    "icons/encounter_" + LayoutConstants.NAVIGATOR_ICON_COLOR + 
                             "_hover.png");
             originalIcon = new ImageIcon(hoverURL);
             scaledImg = originalIcon.getImage();
@@ -45,7 +45,7 @@ public class PartyManagementButton extends JButton{
 
             //Pressed icon for button
             URL pressedURL = getClass().getResource(
-                    "icons/party_" + LayoutConstants.NAVIGATOR_ICON_SELECT + 
+                    "icons/encounter_" + LayoutConstants.NAVIGATOR_ICON_CLICK + 
                             ".png");
             originalIcon = new ImageIcon(pressedURL);
             scaledImg = originalIcon.getImage();
@@ -60,7 +60,7 @@ public class PartyManagementButton extends JButton{
             setMargin(new Insets(0, 0, 0, 0));
             setContentAreaFilled(false);
             setBackground(LayoutConstants.NAVIGATOR_BUTTON_COLOR);
-            setToolTipText("Manage your party");
+            setToolTipText("Start a new Encounter");
 
         } catch (Exception e) {
             System.out.println(e);

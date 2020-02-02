@@ -7,10 +7,10 @@ package dmtools.GUI.main;
 
 import dmtools.GUI.LayoutConstants;
 import dmtools.GUI.main.DisplayPanel;
-import dmtools.GUI.main.buttons.NewEncounterButton;
-import dmtools.GUI.main.buttons.PartyManagementButton;
-import dmtools.GUI.main.buttons.DMToolsButton;
-import dmtools.GUI.main.buttons.SettingsButton;
+import dmtools.GUI.buttons.custombuttons.NewEncounterButton;
+import dmtools.GUI.buttons.custombuttons.PartyManagementButton;
+import dmtools.GUI.buttons.custombuttons.DMToolsButton;
+import dmtools.GUI.buttons.custombuttons.SettingsButton;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;

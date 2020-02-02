@@ -7,9 +7,9 @@ package dmtools.GUI.initiativeguicomponents.panels;
 
 import dmtools.GUI.LayoutConstants;
 import dmtools.GUI.initiativeguicomponents.Cyclable;
-import dmtools.GUI.initiativeguicomponents.buttons.ExitEncounterButton;
-import dmtools.GUI.initiativeguicomponents.buttons.NextPlayerButton;
-import dmtools.GUI.initiativeguicomponents.buttons.PrevPlayerButton;
+import dmtools.GUI.buttons.custombuttons.ExitEncounterButton;
+import dmtools.GUI.buttons.custombuttons.NextPlayerButton;
+import dmtools.GUI.buttons.custombuttons.PrevPlayerButton;
 import static dmtools.GUI.DMToolsGui.frame;
 import dmtools.GUI.main.DisplayPanel;
 import dmtools.game.initiative.InitiativeTracker;

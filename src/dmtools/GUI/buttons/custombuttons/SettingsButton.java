@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dmtools.GUI.main.buttons;
+package dmtools.GUI.buttons.custombuttons;
 
 import dmtools.GUI.LayoutConstants;
 import java.awt.Image;
@@ -16,17 +16,17 @@ import javax.swing.JButton;
  *
  * @author A3
  */
-public class NewEncounterButton extends JButton{
+public class SettingsButton extends JButton{
     private static final int BUTTON_SIZE = 
             LayoutConstants.NAVIGATOR_BUTTON_SIZE; 
     
-    public NewEncounterButton() {
+    public SettingsButton() {
         super();
         try {
             //Main icon for button
             URL defaultURL = getClass().getResource(
-                    "icons/encounter_" + LayoutConstants.NAVIGATOR_ICON_COLOR + 
-                            ".png");
+                    "icons/settings_" + LayoutConstants.NAVIGATOR_ICON_COLOR
+                    + ".png");
             ImageIcon originalIcon = new ImageIcon(defaultURL);
             Image scaledImg = originalIcon.getImage();
             scaledImg = scaledImg.getScaledInstance(BUTTON_SIZE, BUTTON_SIZE,
@@ -35,8 +35,8 @@ public class NewEncounterButton extends JButton{
 
             //Hover icon for button
             URL hoverURL = getClass().getResource(
-                    "icons/encounter_" + LayoutConstants.NAVIGATOR_ICON_COLOR + 
-                            "_hover.png");
+                    "icons/settings_" + LayoutConstants.NAVIGATOR_ICON_COLOR
+                    + "_hover.png");
             originalIcon = new ImageIcon(hoverURL);
             scaledImg = originalIcon.getImage();
             scaledImg = scaledImg.getScaledInstance(BUTTON_SIZE, BUTTON_SIZE,
@@ -45,22 +45,20 @@ public class NewEncounterButton extends JButton{
 
             //Pressed icon for button
             URL pressedURL = getClass().getResource(
-                    "icons/encounter_" + LayoutConstants.NAVIGATOR_ICON_SELECT + 
-                            ".png");
+                    "icons/settings_" + LayoutConstants.NAVIGATOR_ICON_CLICK
+                    + ".png");
             originalIcon = new ImageIcon(pressedURL);
             scaledImg = originalIcon.getImage();
             scaledImg = scaledImg.getScaledInstance(BUTTON_SIZE, BUTTON_SIZE,
                     java.awt.Image.SCALE_SMOOTH);
             setPressedIcon(new ImageIcon(scaledImg));
             
-            
             //Overall button settings
             setBorderPainted(false);
             setBorder(null);
             setMargin(new Insets(0, 0, 0, 0));
             setContentAreaFilled(false);
-            setBackground(LayoutConstants.NAVIGATOR_BUTTON_COLOR);
-            setToolTipText("Start a new Encounter");
+            setToolTipText("Edit settings");
 
         } catch (Exception e) {
             System.out.println(e);
