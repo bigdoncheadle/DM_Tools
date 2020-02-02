@@ -1,7 +1,7 @@
 ---
 layout: default
-title: TITLE
-tagline: TAGLINE
+title: A TITLE
+tagline: A TAGLINE
 description: DESC
 ---
 # Test
