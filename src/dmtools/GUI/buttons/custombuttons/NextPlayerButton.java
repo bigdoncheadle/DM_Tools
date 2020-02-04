@@ -13,7 +13,6 @@ import dmtools.GUI.buttons.CustomButton;
  * @author A3
  */
 public class NextPlayerButton extends CustomButton {
-    private String icon, hover, click;
 
     public NextPlayerButton() {
         super("RIGHTARROW", 
