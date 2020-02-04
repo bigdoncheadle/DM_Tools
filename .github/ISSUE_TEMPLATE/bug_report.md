@@ -26,7 +26,7 @@ If applicable, add screenshots to help explain your problem.
 **Desktop (please complete the following information):**
  - OS: [e.g. iOS]
  - Jave Runtime Environment [e.g. JRE 1.8.XX]
- - Version [e.g. 22]
+ - DMTools Version [e.g. v.1.0.0]
 
 **Additional context**
 Add any other context about the problem here.
