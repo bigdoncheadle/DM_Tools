@@ -16,7 +16,7 @@ public class NextPlayerButton extends CustomButton {
     private String icon, hover, click;
 
     public NextPlayerButton() {
-        super("RightArrow", 
+        super("RIGHTARROW", 
                 LayoutConstants.ARROW_COLOR, 
                 LayoutConstants.ARROW_CLICK_COLOR, 
                 LayoutConstants.ENCOUNTER_BUTTON_SIZE, 
