@@ -6,10 +6,8 @@
 package dmtools;
 
 import dmtools.GUI.DMToolsGui;
-import dmtools.filehandling.FileHandler;
 import dmtools.playermgmt.PlayerParty;
 import dmtools.filehandling.Initialize;
-import java.io.IOException;
 import javax.swing.SwingUtilities;
 
 /**
@@ -18,7 +16,7 @@ import javax.swing.SwingUtilities;
  */
 public class DMTools {
 
-    private static final String VERSION = "v.0.1-alpha";
+    private static final String VERSION = "v.0.3-alpha";
 
     /**
      * @param args the command line arguments
