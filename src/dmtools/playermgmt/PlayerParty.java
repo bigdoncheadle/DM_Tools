@@ -6,8 +6,9 @@
 package dmtools.playermgmt;
 
 import dmtools.filehandling.ReadWritable;
+import dmtools.game.entities.DNDEntity;
 import dmtools.game.entities.PC;
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,7 +16,7 @@ import java.util.TreeSet;
  */
 public class PlayerParty extends Party implements ReadWritable {
 
-    public PlayerParty(String name, TreeSet<PC> party) {
+    public PlayerParty(String name, ArrayList<PC> party) {
         super(name);
         for (PC i : party) {
             super.add(i);
@@ -26,12 +27,29 @@ public class PlayerParty extends Party implements ReadWritable {
         super(name);
     }
     
-    public static String getFilePath(String name) {
-        return "User/Parties/" + name.toUpperCase() + ".pty";
-    }
     
     @Override
     public String getFilePath() {
-        return "User/Parties/" + super.getName().toUpperCase() + ".pty";
+        return "Campaigns/default/party.pty";
     }
+    
+    public static String getPartyPath() {
+        return "Campaigns/default/party.pty";
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Party: ");
+        sb.append(name);
+        sb.append("\n");
+        sb.append("Members: \n");
+        for (DNDEntity i : party) {
+            sb.append(i.getName());
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+    
+    
 }

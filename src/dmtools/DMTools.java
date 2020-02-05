@@ -5,7 +5,9 @@
  */
 package dmtools;
 
-import dmtools.GUI.main.DMToolsGui;
+import dmtools.GUI.DMToolsGui;
+import dmtools.playermgmt.PlayerParty;
+import dmtools.filehandling.Initialize;
 import javax.swing.SwingUtilities;
 
 /**
@@ -13,14 +15,23 @@ import javax.swing.SwingUtilities;
  * @author A3
  */
 public class DMTools {
-    private static final String VERSION = "v.0.1-alpha";
+
+    private static final String VERSION = "v.0.3-alpha";
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Initialize.setup();
+        
+        try {
+            PlayerParty party = Initialize.getParty();
+            DMToolsGui dmGui = new DMToolsGui(VERSION, party);
+            SwingUtilities.invokeLater(dmGui);
+        } catch (Exception e) {
+            System.out.println(e.getLocalizedMessage());
+        }
 
-        DMToolsGui gui = new DMToolsGui(VERSION);
-        SwingUtilities.invokeLater(gui);
     }
 }

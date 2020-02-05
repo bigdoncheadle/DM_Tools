@@ -5,6 +5,7 @@
  */
 package dmtools.game.entities;
 
+import dmtools.filehandling.ReadWritable;
 import dmtools.game.entities.numericals.StatBlock;
 import dmtools.game.entities.numericals.enums.Skill;
 import dmtools.game.entities.numericals.enums.Stat;
@@ -13,12 +14,13 @@ import dmtools.game.entities.numericals.enums.Stat;
  *
  * @author A3
  */
-public class Monster extends DNDEntity{
+public class Monster extends DNDEntity implements ReadWritable{
     private int CR;
     private String monsterType;
-    
-    public Monster(String name, String monsterType, int AC, 
+
+    public Monster(String name, String monsterType, int AC,
             int HP, int CR) {
+        // Statblock is a placeholder until monsters are actually developed
         super(name, new StatBlock(), AC, HP);
         this.CR = CR;
         this.monsterType = monsterType;
@@ -27,11 +29,11 @@ public class Monster extends DNDEntity{
     public int getCR() {
         return CR;
     }
-    
+
     public String getType() {
         return monsterType;
     }
-    
+
     @Override
     public int getProficiencyBonus() {
         return 0;
@@ -48,8 +50,11 @@ public class Monster extends DNDEntity{
     }
 
     @Override
-    public int compareTo(DNDEntity o) {
-        return this.name.compareTo(o.name);
+    public String getFilePath() {
+        return "Campaigns/default/Monsters/" + this.name + ".mon";
     }
-    
+
+    public static String getFilePath(String name) {
+        return "Campaigns/default/Monsters/" + name + ".mon";
+    }
 }

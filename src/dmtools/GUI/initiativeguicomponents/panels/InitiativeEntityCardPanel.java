@@ -6,6 +6,7 @@
 package dmtools.GUI.initiativeguicomponents.panels;
 
 import dmtools.GUI.LayoutConstants;
+import dmtools.GUI.entityguicomponents.panels.masterpanels.HordePanel;
 import dmtools.GUI.entityguicomponents.panels.masterpanels.MonsterPanel;
 import dmtools.GUI.entityguicomponents.panels.masterpanels.PCPanel;
 import dmtools.game.initiative.InitiativeTracker;
@@ -13,10 +14,10 @@ import java.awt.CardLayout;
 import javax.swing.JPanel;
 import dmtools.GUI.initiativeguicomponents.Cyclable;
 import dmtools.game.entities.DNDEntity;
+import dmtools.game.entities.Horde;
 import dmtools.game.entities.Monster;
 import dmtools.game.entities.PC;
 import javax.swing.BorderFactory;
-import javax.swing.border.EtchedBorder;
 
 /**
  *
@@ -45,6 +46,9 @@ public class InitiativeEntityCardPanel extends JPanel implements Cyclable{
             }
             if (i.getClass() == Monster.class) {
                 add(new MonsterPanel((Monster)i));
+            }
+            if (i.getClass() == Horde.class) {
+                add(new HordePanel((Horde)i));
             }
         }
     }

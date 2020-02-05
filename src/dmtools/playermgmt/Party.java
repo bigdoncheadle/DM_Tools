@@ -18,7 +18,7 @@ import java.util.TreeSet;
 public abstract class Party implements ReadWritable{
 
     protected ArrayList<DNDEntity> party;
-    private String name;
+    protected String name;
 
     public Party(String name) {
         this.name = name;
@@ -30,6 +30,7 @@ public abstract class Party implements ReadWritable{
     }
 
     public ArrayList<DNDEntity> getMembers() {
+        Collections.sort(party);
         return party;
     }
 
@@ -46,5 +47,20 @@ public abstract class Party implements ReadWritable{
 
     public boolean containsEntity(DNDEntity e) {
         return party.contains(e);
+    }
+
+    @Override
+    public boolean equals(Object inQuestion) {
+        if (inQuestion == null) {
+            return false;
+        }
+        
+        if (getClass() != inQuestion.getClass()) {
+            return false;
+        }
+
+        Party compared = (Party) inQuestion;
+        
+        return getMembers().equals(compared.getMembers());
     }
 }

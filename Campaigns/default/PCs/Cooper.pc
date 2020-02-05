@@ -1,0 +1,11 @@
+characterName=COOPER
+playerName=KRISTINA
+race=TIEFLING
+alignment=LAWFUL_GOOD
+playableClass=BARBARIAN
+characterLevel=20
+statBlock=10 20 10 10 10 10
+selectedSkills=NATURE
+armorClass=25
+maxHP=100
+currentHP=100

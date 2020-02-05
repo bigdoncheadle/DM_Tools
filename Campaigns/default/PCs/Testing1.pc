@@ -1,0 +1,11 @@
+characterName=Testing1
+playerName=Developer
+race=DWARF
+alignment=LAWFUL_EVIL
+playableClass=BARBARIAN
+characterLevel=20
+statBlock=10 1066 10 10 10 10
+selectedSkills=ARCANA STEALTH
+armorClass=25
+maxHP=100
+currentHP=100

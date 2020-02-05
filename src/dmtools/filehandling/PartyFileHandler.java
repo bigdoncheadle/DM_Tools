@@ -5,7 +5,6 @@
  */
 package dmtools.filehandling;
 
-import dmtools.game.entities.DNDEntity;
 import dmtools.game.entities.PC;
 import dmtools.playermgmt.Party;
 import dmtools.playermgmt.PlayerParty;
@@ -34,16 +33,18 @@ public class PartyFileHandler {
         if (partyType == PLAYER_PARTY) {
             PlayerParty playerParty = new PlayerParty(
                     partyProperties.getProperty("partyName"));
-            StringBuilder memberString = new StringBuilder();
-            memberString.append(partyProperties.getProperty("members"));
-            String[] members = memberString.toString().split(" ");
-            for (String i : members) {
-                try {
-                    playerParty.add((PC) FileHandler.loadFromName(i,
-                            FileHandler.PC_FILE));
-                } catch (IOException e) {
-                    throw new IOException("Party member " + i + "'s file could "
-                            + "not be found");
+            if (!partyProperties.getProperty("members").equals("null")) {
+                StringBuilder memberString = new StringBuilder();
+                memberString.append(partyProperties.getProperty("members"));
+                String[] members = memberString.toString().split("\\$");
+                for (String i : members) {
+                    try {
+                        playerParty.add((PC) FileHandler.loadFromName(i,
+                                FileHandler.PC_FILE));
+                    } catch (IOException e) {
+                        throw new IOException("Party member " + i + "'s file could "
+                                + "not be found");
+                    }
                 }
             }
             return playerParty;
@@ -63,12 +64,16 @@ public class PartyFileHandler {
                 fWrite.write("partyName=");
                 fWrite.write(party.getName() + "\n");
                 fWrite.write("members=");
-                Iterator it = party.getMembers().iterator();
-                while (it.hasNext()) {
-                    PC i = (PC) it.next();
-                    fWrite.write(i.getName());
-                    if (it.hasNext()) {
-                        fWrite.write(" ");
+                if (party.getMembers().isEmpty()) {
+                    fWrite.write("null");
+                } else {
+                    Iterator it = party.getMembers().iterator();
+                    while (it.hasNext()) {
+                        PC i = (PC) it.next();
+                        fWrite.write(i.getName());
+                        if (it.hasNext()) {
+                            fWrite.write("$");
+                        }
                     }
                 }
                 fWrite.close();
@@ -80,6 +85,19 @@ public class PartyFileHandler {
         } //if the method is not given a proper party type
         else {
             throw new IOException("Party type not supported/found");
+        }
+    }
+
+    static void makeNew(int partyType, File partyFile) {
+        FileWriter fWrite;
+        if (partyType == PLAYER_PARTY) {
+            try {
+                fWrite = new FileWriter(partyFile);
+                fWrite.write("partyName=New Party\n");
+                fWrite.write("members=null");
+                fWrite.close();
+            } catch (IOException e) {
+            }
         }
     }
 }

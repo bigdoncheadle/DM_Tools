@@ -95,7 +95,7 @@ public class PC extends DNDEntity implements ReadWritable{
     }
     
     public static String getFilePath(String name) {
-        return "User/PCs/" + name.toUpperCase() + ".pc";
+        return "Campaigns/default/PCs/" + name + ".pc";
     }
     
     @Override
@@ -132,13 +132,6 @@ public class PC extends DNDEntity implements ReadWritable{
 
     @Override
     public String getFilePath() {
-        return "User/PCs/" + this.name.toUpperCase() + ".pc";
+        return "Campaigns/default/PCs/" + this.name + ".pc";
     }
-
-    @Override
-    public int compareTo(DNDEntity o) {
-        return this.name.compareTo(o.name);
-    }
-    
-
 }
